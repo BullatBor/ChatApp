@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './Content.module.css'
+import { MyPosts } from './MyPosts/MyPosts'
 
 export const Content = () => {
   return (
@@ -10,20 +11,7 @@ export const Content = () => {
       <div>
         ava+description
       </div>
-      <div>
-        My Posts
-        <div>
-          New Post
-        </div>
-          <div className={classes.posts}>
-            <div className={classes.item}>
-              Post1
-            </div>
-            <div className={classes.item}>
-              Post2
-            </div>
-          </div>
-      </div>
+      <MyPosts/>
     </div>
       
   )
