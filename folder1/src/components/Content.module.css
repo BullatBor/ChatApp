@@ -1,0 +1,8 @@
+.content{
+  grid-area: main;
+  background-color: khaki;
+  }
+
+  .item {
+    color: aqua;
+  }
