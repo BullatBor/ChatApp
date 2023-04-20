@@ -1,10 +1,10 @@
 
   .item {
-    color: aqua;
+    color: rgb(107, 128, 128);
   }
 
   .item img{
     width: 70px;
     height: 70px;
-    border-radius: 20px;
+    border-radius: 30px;
   }
