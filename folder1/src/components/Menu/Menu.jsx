@@ -1,23 +1,24 @@
 import React from 'react'
 import  classes from "./Menu.module.css"
+import {Link, NavLink, Router} from 'react-router-dom'
 
 export const Menu = () => {
   return (
     <div className={classes.nav}>
         <div className={classes.item}>
-          <a href='#'>Профиль</a>
+          <NavLink to={"/profile"} className={({ isActive }) => (isActive && classes.activeLink)}>Профиль</NavLink>
         </div>
         <div className={`${classes.item} ${classes.active}`}>
-          <a >Сообщения</a>
+          <NavLink to={"/dialogs"} className={({ isActive }) => (isActive && classes.activeLink)}>Сообщения</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='#'>Новости</a>
+          <NavLink to={"/news"} className={({ isActive }) => (isActive && classes.activeLink)}>Новости</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='#'>Музыка</a>
+          <NavLink to={"/music"} className={({ isActive }) => (isActive && classes.activeLink)}>Музыка</NavLink>
         </div>
         <div className={classes.item}>
-          <a href='#'>Настройки</a>
+          <NavLink to={"/settings"} className={({ isActive }) => (isActive && classes.activeLink)}>Настройки</NavLink>
         </div>
       </div>
   )

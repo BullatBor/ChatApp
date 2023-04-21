@@ -1,13 +1,26 @@
 .nav{
   grid-area: bar;
-  background-color: darkolivegreen;
+  background-color: #dce1e6;
+  padding: 20px;
   }
 
-  .item {
+  .item{
+    align-items: center;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .item:hover{
+    background-color: #b8babd;
+  }
+
+  .item a {
+    padding-left: 6px;
+    height: 30px;
     text-decoration: none;
-    color: white;
+    color: #2a5885;
   }
 
-  .item.active {
-    color: gold;
+  .item a.activeLink {
+    color: rgb(114, 113, 109);
   }

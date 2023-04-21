@@ -10,5 +10,10 @@
   grid-template-columns: 2fr 10fr;
 }
 
-
+.app-wrapper-content{
+  grid-area: main;
+  background-color: #dce1e6;
+  padding-top: 20px;
+  width: 100%;
+}
 

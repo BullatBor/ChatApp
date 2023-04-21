@@ -5,8 +5,8 @@ import { Post } from './Post/Post'
 export const MyPosts= () => {
   return (
     <div className={classes.content}>
-      <div>
-        My Posts
+      <div className={classes.postsBlock}>
+        <h3>My Posts</h3>
         <div>
           <textarea></textarea>
           <div>
@@ -14,8 +14,8 @@ export const MyPosts= () => {
           </div>
         </div>
           <div className={classes.posts}>
-            <Post message='Hi'/>
-            <Post message='Hi'/>
+            <Post message='Hi' likesCount={2}/>
+            <Post message='Tvar ' likesCount={50}/>
           </div>
       </div>
     </div>

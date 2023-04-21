@@ -1,0 +1,78 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+    border-radius: 15px;
+}
+
+.dialogsItems{
+    background-color: white;
+    text-decoration: none;
+    border: #c9c9cc 0.4px solid;
+}
+.dialog_name{
+    padding-top: 12.5px;
+    width: 229px;
+    border-bottom:  #c9c9cc 0.4px solid;
+}
+.dialog_name:hover{
+    border-bottom:  0;
+}
+
+.dialog_name a{
+    text-decoration: none;
+}
+
+.dialog{
+    display: flex;
+    cursor: pointer;
+    padding-left: 10px;
+    
+}
+
+.dialog:hover{
+    background-color: rgb(236, 247, 255);
+    border-bottom:  #c9c9cc 0.4px solid transparent;
+}
+
+.dialog_photo{
+    width: 53px;
+    height: 62px;
+}
+.dialog img{
+    width: 46px;
+    height: 46px;
+    border-radius: 30px;
+    padding: 9px 7px 7px 0;
+}
+
+.dialogsItems a.activeLink {
+    color: gold;
+  }
+ 
+.messages{
+    padding: 10px;
+    background-color: white;
+    border-top: #c9c9cc 0.4px solid;
+    border-right: #c9c9cc 0.4px solid;
+    border-bottom: #c9c9cc 0.4px solid;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.messeges .message{
+    
+}
+
+.searchBlock{
+ margin-bottom: 5px;
+ background-color: white;
+ border-top-left-radius: 15px;
+ border: #c9c9cc 0.4px solid;
+}
+
+.searchBlock input{
+    border: none;
+    height: 48px;
+    margin-top: 10px;
+    margin-left: 10px;
+   }
