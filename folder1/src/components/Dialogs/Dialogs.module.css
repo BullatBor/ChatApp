@@ -50,7 +50,6 @@
   }
  
 .messages{
-    padding: 10px;
     background-color: white;
     border-top: #c9c9cc 0.4px solid;
     border-right: #c9c9cc 0.4px solid;
@@ -72,7 +71,19 @@
 
 .searchBlock input{
     border: none;
-    height: 48px;
-    margin-top: 10px;
     margin-left: 10px;
+    border-left-width: 15px;
+    padding: 17px 10px 17px 26px;
+   }
+
+   .SearchInput:active,:focus{
+  outline: 0;
+  border: none;
+   }
+
+   .NavName{
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: #c9c9cc 0.4px solid;
    }

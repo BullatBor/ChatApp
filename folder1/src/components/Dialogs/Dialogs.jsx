@@ -1,49 +1,41 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import classes from './Dialogs.module.css'
+import { DialogsSearch } from './DialogSearch/Dialogs';
+import { DialogItem } from './DialogsItem/DialogItem';
+import { Message } from './MessageItem/Message';
 
-const DialogItem = (props) => {
-  let path = "/dialogs/" + props.id;
-  return(
-    <div className={classes.dialog + ' ' + classes.active}>
-      <div className={classes.dialog_photo}>
-        <img src='https://pictureholiday.ru/wp-content/uploads/2018/05/2.jpg'/>
-      </div>
-      <div className={classes.dialog_name}>
-          <NavLink to={path} className={({ isActive }) => (isActive && classes.activeLink)}>{props.name}</NavLink>
-      </div>
-    </div>
-  )
-}
-const DialogsSearch = () => {
-  return(
-    <div className={classes.searchBlock}>
-      <input placeholder='Поиск'></input>
-    </div>
-  )
-}
 
-const Message = (props) => {
-  return(
-    <div className={classes.message}>{props.message}</div>
-  )
-}
 
-export const Dialogs = () => {
+export const Dialogs = (props) => {
+
   return (
     <div className={classes.dialogs}>
       <div>
           <DialogsSearch/>
+          <div className={classes.dialogsItems}>
+          {props.DialogsData.map((item) => {
+            return <DialogItem key={item.id} id={item.id} name={item.name}/>
+          })
+        }
+        </div>
+          {/*
         <div className={classes.dialogsItems}>
           <DialogItem id='1' name={"Эрдэм"}/>
           <DialogItem id='2' name={"Тимур"}/>
           <DialogItem id='3' name={"Даши"}/>
         </div>
+  */}
       </div>
       <div className={classes.messages}>
-          <Message message='Hi'/>
-          <Message message='How are you?'/>
-          <Message message='Hello'/>
+        <div className={classes.NavName}>
+            <div>
+              Имя собеседника
+            </div>
+        </div>
+        {props.Message.map(item => {
+          return <Message key={item.id} message={item.message}/>
+        })}
       </div>
     </div>
   )

@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Content } from './components/Content/Content';
-import { Music } from './components/Content/MyPosts/Music/Music';
-import { News } from './components/Content/MyPosts/News/News';
-import { Settings } from './components/Content/MyPosts/Settings/Settings';
+import { Music } from './components/Menu/Music/Music';
+import { News } from './components/Menu/News/News';
+import { Settings } from './components/Menu/Settings/Settings';
 import { Dialogs } from './components/Dialogs/Dialogs';
 import Header from './components/Header/Header';
 import { Menu } from './components/Menu/Menu';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
     <div className="app-wrapper">
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path='/profile' element={<Content/>}/>
           {/*<Route path='*' element={<Content/>}/>*/}
-          <Route path='/dialogs' element={<Dialogs/>}/>
+          <Route path='/dialogs' element={<Dialogs DialogsData={props.Dialog} Message={props.Messages}/>}/>
           <Route path='/news' element={<News/>}/>
           <Route path='/music' element={<Music/>}/>
           <Route path='/settings' element={<Settings/>}/>
