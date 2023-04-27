@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import classes from './Dialogs.module.css'
 import { DialogsSearch } from './DialogSearch/Dialogs';
 import { DialogItem } from './DialogsItem/DialogItem';
+import { FriendsSlide } from './FriendsSlide/FriendsCarousel';
 import { Message } from './MessageItem/Message';
 
 
@@ -13,12 +14,13 @@ export const Dialogs = (props) => {
     <div className={classes.dialogs}>
       <div>
           <DialogsSearch/>
+          <FriendsSlide state={props.state}/>
           <div className={classes.dialogsItems}>
-          {props.DialogsData.map((item) => {
+          {props.state.Dialogs.map((item) => {
             return <DialogItem key={item.id} id={item.id} name={item.name}/>
           })
         }
-        </div>
+        </div>       
           {/*
         <div className={classes.dialogsItems}>
           <DialogItem id='1' name={"Эрдэм"}/>
@@ -33,7 +35,7 @@ export const Dialogs = (props) => {
               Имя собеседника
             </div>
         </div>
-        {props.Message.map(item => {
+        {props.state.Messages.map(item => {
           return <Message key={item.id} message={item.message}/>
         })}
       </div>

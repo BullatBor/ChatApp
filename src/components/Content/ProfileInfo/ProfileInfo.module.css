@@ -34,7 +34,7 @@
     background-size: cover;
     height: 300px;
     border-radius: 15px;
-    border: #b0b0b1 1px solid;
+    border: #b0b0b1 0.4px solid;
     background-color: white;
     z-index: 0;
 }

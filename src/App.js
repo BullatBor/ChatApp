@@ -16,9 +16,12 @@ function App(props) {
       <Menu/>
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path='/profile' element={<Content/>}/>
+          <Route path='/profile' element={<Content state={props.state.ProfilePage} 
+          addPost={props.addPost} 
+          updateNewPostText={props.updateNewPostText}/>
+          }/>
           {/*<Route path='*' element={<Content/>}/>*/}
-          <Route path='/dialogs' element={<Dialogs DialogsData={props.Dialog} Message={props.Messages}/>}/>
+          <Route path='/dialogs' element={<Dialogs state={props.state.MessagesPage}/>}/>
           <Route path='/news' element={<News/>}/>
           <Route path='/music' element={<Music/>}/>
           <Route path='/settings' element={<Settings/>}/>
