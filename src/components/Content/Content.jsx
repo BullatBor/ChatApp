@@ -6,13 +6,12 @@ import { ProfileInfo } from './ProfileInfo/ProfileInfo'
 import { RightColumn } from './RightColumn/RightColumn'
 
 export const Content = (props) => {
-
   return (
     <div className={classes.Profile}>
       <ProfileInfo/>
       <div className={classes.ProfilePosts}>
         <div>
-          <LeftColumn state={props.state} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
+          <LeftColumn store={props.store}/>
         </div>
         <div>
           <RightColumn/>

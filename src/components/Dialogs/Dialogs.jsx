@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import classes from './Dialogs.module.css'
 import { DialogsSearch } from './DialogSearch/Dialogs';
 import { DialogItem } from './DialogsItem/DialogItem';
@@ -9,7 +8,13 @@ import { Message } from './MessageItem/Message';
 
 
 export const Dialogs = (props) => {
-
+const onSendMessage = () => {
+  props.SendMessage()
+}
+const MessageWriting = (e) => {
+  let text = e.target.value;
+  props.ChangeMessage(text)
+}
   return (
     <div className={classes.dialogs}>
       <div>
@@ -35,9 +40,25 @@ export const Dialogs = (props) => {
               Имя собеседника
             </div>
         </div>
-        {props.state.Messages.map(item => {
-          return <Message key={item.id} message={item.message}/>
-        })}
+        <div className={classes.messageList}>
+          {props.state.Messages.map(item => {
+            return <Message key={item.id} message={item.message}/>
+          })}
+        </div>
+        <div className={classes.MessageInputBlock}>
+            <div className={classes.MessageInput}>
+              <div className={classes.MessageInputItem}>
+                <input className={classes.SearchInput} 
+                onChange={MessageWriting}
+                value={props.state.newMessageText}
+                placeholder="Введите сообщение"
+                >
+                </input>  
+              </div>  
+              <button onClick={onSendMessage}>отправить</button>  
+            </div>            
+        </div>
+
       </div>
     </div>
   )

@@ -7,7 +7,9 @@
 .dialogsItems{
     background-color: white;
     text-decoration: none;
-    border: #c9c9cc 0.4px solid;
+    border-top: #c9c9cc 0.4px solid;
+    border-left: #c9c9cc 0.4px solid;
+    border-bottom: #c9c9cc 0.4px solid;
 }
 .dialog_name{
     padding-top: 12.5px;
@@ -50,12 +52,20 @@
   }
  
 .messages{
+    height: 650px;
+    position: relative;
     background-color: white;
     border-top: #c9c9cc 0.4px solid;
     border-right: #c9c9cc 0.4px solid;
     border-bottom: #c9c9cc 0.4px solid;
+    border-left: #c9c9cc 0.4px solid;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+.message{
+    cursor: pointer;
+    padding-left: 20px;
+    padding-bottom: 10px;
 }
 
 .searchBlock{
@@ -145,3 +155,39 @@
    .btnRight:hover{
     opacity: 1;
    }
+
+   .MessageInputBlock{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 700px;
+    display: flex;
+    bottom: 0;
+    border-top:#c9c9cc 0.4px solid;
+ 
+   }
+   .MessageInput input{
+    font-size: 14px;
+    border: none;
+    border-left-width: 15px;
+    padding: 9px 74px 10px 13px;
+    border-radius: 6px;
+   }
+
+   .MessageInput{
+    padding-top: 12px;
+    padding-left: 10px;
+    margin-bottom: 12px;
+    display: flex;
+   }
+
+   .MessageInputItem{
+    border: #c9c9cc 0.4px solid; 
+    border-radius: 6px;
+   }
+
+   .messageList{
+
+   }
+
+

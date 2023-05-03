@@ -2,22 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {addPost, subscribe, updateNewPostText} from './redux/state'
-import state from './redux/state';
+import ProfileStore from './redux/redux-store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export const Rerender= () => {
+export const Rerender= (state) => {
+
   root.render(
     <React.StrictMode>
-      <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+      <App state={state} dispatch={ProfileStore.dispatch.bind(ProfileStore)} store={ProfileStore}/>
     </React.StrictMode>
   );
 }
 
-Rerender();
+Rerender(ProfileStore.getState());
 
-subscribe(Rerender)
+ProfileStore.subscribe(() => {
+  let state = ProfileStore.getState();
+  Rerender(state)
+})
 
 
 

@@ -1,66 +1,18 @@
-let Rerender = (state) => {
-    console.log('sdf')
-}
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+
 
 let ProfileStore = {
-    _posts: [
-        {id: 1, message: "sdfsdfsefsef", likesCount: 12},
-        {id: 2, message: "sdfsdfsefsef", likesCount: 12},
-        {id: 3, message: "sdfsdfsefsef", likesCount: 12}
-    ],
-    _Dialogs: [
-        {id: 1, name: "Erdem"},
-        {id: 2, name: "Timur"},
-        {id: 3, name: "Dashi"}
-    ],
-    _Messages: [
-        {id: 1, message: "sdfsdf"},
-        {id: 2, message: "sdfs"},
-        {id: 3, message: "sdfsdfwqwe31"}
-    ],
-    _PostText: "Введите текст",
-    addPost() {
-        let newPost = {
-            id: 4,
-            message: this.PostText,
-            likesCount: 0
-        };
-        this.posts.push(newPost)
-        this.PostText = '';
-        Rerender()
-    },
-    updateNewPostText(newText) {
-        this.PostText = newText;
-        Rerender()
-      },
-
-    getPosts(){
-        return this._posts
-    },
-    getDialogs(){
-        return this._Dialogs
-    },
-    getMessages(){
-        return this._Messages
-    },
-    subscribe(observer) {
-    Rerender = observer;// observer паттерн
-    },
-    Rerender () {
-        console.log('sdf')
-    }
-
-}
-  let state = {
+    state: {
         ProfilePage: {
             posts: [
                 {id: 1, message: "sdfsdfsefsef", likesCount: 12},
                 {id: 2, message: "sdfsdfsefsef", likesCount: 12},
                 {id: 3, message: "sdfsdfsefsef", likesCount: 12}
             ],
-            PostText: "Fndsnfdsofndos"
+            _PostText: "Введите текст",
         },
-        MessagesPage: {
+        DialogsPage: {
             Dialogs: [
                 {id: 1, name: "Erdem"},
                 {id: 2, name: "Timur"},
@@ -69,29 +21,45 @@ let ProfileStore = {
             Messages: [
                 {id: 1, message: "sdfsdf"},
                 {id: 2, message: "sdfs"},
-                {id: 3, message: "sdfsdfwqwe31"}
-            ]
+                {id: 3, message: "sdfsdfwqwe31"},
+                {id: 4, message: "TEST"}
+            ],
+            _newMessageText: '',
         }
-  }
 
-  export const addPost = () => {
-    let newPost = {
-        id: 4,
-        message: state.ProfilePage.PostText,
-        likesCount: 0
-    };
-    state.ProfilePage.posts.push(newPost)
-    state.ProfilePage.PostText = '';
-    Rerender(state)
-  }
+    },
 
-  export const updateNewPostText = (newText) => {
-    state.ProfilePage.PostText = newText;
-    Rerender(state)
-  }
+    
+    dispatch(action) {//action это объект {type: 'описание действия'}
+        this.state.ProfilePage = profileReducer(this.state.ProfilePage, action);
+        this.state.DialogsPage = dialogsReducer(this.state.DialogsPage, action);
+        this.Rerender()
+    },
 
-  export const subscribe = (observer) => {
-     Rerender = observer;// observer паттерн
-  }
+    get Posts(){
+        return this.state.ProfilePage.posts;
+    },
+    get Dialogs(){
+        return this.state.DialogsPage.Dialogs;
+    },
+    get Messages(){
+        return this.state.DialogsPage.Messages
+    },
+    get PostText(){
+        return this.state.ProfilePage._PostText
+    },
+    get MessageText(){
+        return this.state.DialogsPage._newMessageText;
+    },
+    subscribe(observer) {
+    this.Rerender = observer;// observer паттерн
+    },
+    Rerender () {
+        console.log('sdf')
+    }
 
-  export default state;
+}
+
+window.state = ProfileStore;
+
+  export default ProfileStore;
