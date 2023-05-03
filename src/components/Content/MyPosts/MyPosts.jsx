@@ -4,7 +4,6 @@ import { Post } from './Post/Post'
 
 
 export const MyPosts= (props) => {
-
   let NewPost = React.createRef()
   const onAddPost = () => {
     props.addPost();

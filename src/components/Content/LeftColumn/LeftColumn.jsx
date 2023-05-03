@@ -7,7 +7,7 @@ export const LeftColumn = (props) => {
   return (
     <div className={classes.Column}>
         <GroupItems/>
-          <MyPostsContainer store={props.store}/>
+          <MyPostsContainer/>
     </div>
   )
 }

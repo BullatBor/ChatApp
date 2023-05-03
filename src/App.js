@@ -11,23 +11,21 @@ import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 
 function App(props) {
   return (
-    <BrowserRouter>
     <div className="app-wrapper">
       <Header/>
       <Menu/>
       <div className='app-wrapper-content'>
         <Routes>
-          <Route path='/profile' element={<Content store={props.store}/>
+          <Route path='/profile' element={<Content/>
           }/>
           {/*<Route path='*' element={<Content/>}/>*/}
-          <Route path='/dialogs' element={<DialogsContainer store={props.store}/>}/>
+          <Route path='/dialogs' element={<DialogsContainer/>}/>
           <Route path='/news' element={<News/>}/>
           <Route path='/music' element={<Music/>}/>
           <Route path='/settings' element={<Settings/>}/>
         </Routes> 
       </div>
     </div>
-    </BrowserRouter>
   );
 }
 

@@ -11,7 +11,7 @@ export const Content = (props) => {
       <ProfileInfo/>
       <div className={classes.ProfilePosts}>
         <div>
-          <LeftColumn store={props.store}/>
+          <LeftColumn/>
         </div>
         <div>
           <RightColumn/>
