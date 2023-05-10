@@ -4,7 +4,6 @@ import { Post } from './Post/Post'
 
 
 export const MyPosts= (props) => {
-
   let NewPost = React.createRef()
   const onAddPost = () => {
     props.addPost();
@@ -14,7 +13,7 @@ export const MyPosts= (props) => {
     let text = NewPost.current.value;
     props.updateNewPostText(text);
   }
-  let mass = props.post;
+  let mass = props.posts;
   return (
     <div className={classes.content}>
       <div className={classes.postsBlock}>

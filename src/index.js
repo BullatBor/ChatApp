@@ -3,24 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import ProfileStore from './redux/redux-store';
+import {Provider} from "react-redux"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-export const Rerender= (state) => {
-
   root.render(
     <React.StrictMode>
-      <App state={state} dispatch={ProfileStore.dispatch.bind(ProfileStore)} store={ProfileStore}/>
+      <Provider store={ProfileStore}>
+        <App/>
+      </Provider>
     </React.StrictMode>
   );
-}
 
-Rerender(ProfileStore.getState());
-
-ProfileStore.subscribe(() => {
-  let state = ProfileStore.getState();
-  Rerender(state)
-})
 
 
 

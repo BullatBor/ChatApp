@@ -19,20 +19,13 @@ const MessageWriting = (e) => {
     <div className={classes.dialogs}>
       <div>
           <DialogsSearch/>
-          <FriendsSlide state={props.state}/>
+          <FriendsSlide state={props.DialogsPage}/>
           <div className={classes.dialogsItems}>
-          {props.state.Dialogs.map((item) => {
+          {props.DialogsPage.Dialogs.map((item) => {
             return <DialogItem key={item.id} id={item.id} name={item.name}/>
           })
         }
         </div>       
-          {/*
-        <div className={classes.dialogsItems}>
-          <DialogItem id='1' name={"Эрдэм"}/>
-          <DialogItem id='2' name={"Тимур"}/>
-          <DialogItem id='3' name={"Даши"}/>
-        </div>
-  */}
       </div>
       <div className={classes.messages}>
         <div className={classes.NavName}>
@@ -41,7 +34,7 @@ const MessageWriting = (e) => {
             </div>
         </div>
         <div className={classes.messageList}>
-          {props.state.Messages.map(item => {
+          {props.DialogsPage.Messages.map(item => {
             return <Message key={item.id} message={item.message}/>
           })}
         </div>
@@ -50,7 +43,7 @@ const MessageWriting = (e) => {
               <div className={classes.MessageInputItem}>
                 <input className={classes.SearchInput} 
                 onChange={MessageWriting}
-                value={props.state.newMessageText}
+                value={props.DialogsPage.newMessageText}
                 placeholder="Введите сообщение"
                 >
                 </input>  

@@ -11,6 +11,9 @@ export const Menu = () => {
         <div className={`${classes.item} ${classes.active}`}>
           <NavLink to={"/dialogs"} className={({ isActive }) => (isActive && classes.activeLink)}>Сообщения</NavLink>
         </div>
+        <div className={`${classes.item} ${classes.active}`}>
+          <NavLink to={"/friends"} className={({ isActive }) => (isActive && classes.activeLink)}>Друзья</NavLink>
+        </div>
         <div className={classes.item}>
           <NavLink to={"/news"} className={({ isActive }) => (isActive && classes.activeLink)}>Новости</NavLink>
         </div>

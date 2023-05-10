@@ -60,6 +60,5 @@ let ProfileStore = {
 
 }
 
-window.state = ProfileStore;
 
   export default ProfileStore;

@@ -5,13 +5,13 @@ import { LeftColumn } from './LeftColumn/LeftColumn'
 import { ProfileInfo } from './ProfileInfo/ProfileInfo'
 import { RightColumn } from './RightColumn/RightColumn'
 
-export const Content = (props) => {
+export const Content = () => {
   return (
     <div className={classes.Profile}>
       <ProfileInfo/>
       <div className={classes.ProfilePosts}>
         <div>
-          <LeftColumn store={props.store}/>
+          <LeftColumn/>
         </div>
         <div>
           <RightColumn/>

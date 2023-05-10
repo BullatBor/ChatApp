@@ -12,18 +12,24 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch(action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 id: 4,
                 message: state.PostText,
                 likesCount: 0
             };
-            state.posts.push(newPost)
-            state.PostText = '';
-            return state;
-        case UPDATE_NEW_POST_TEXT:
-            state.PostText = action.newText;
-            return state
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                PostText: ''
+            };//Чтобы redux видел изменения, и чтобы сравнивал со старым state возращаем новый элемент
+        }
+        case UPDATE_NEW_POST_TEXT: {
+            return {
+                ...state,
+                PostText: action.newText
+            };//Чтобы redux видел изменения, делаем копию
+        }
         default:
             return state;
     }
