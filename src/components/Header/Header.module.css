@@ -7,3 +7,20 @@
     width: 100px;
   }
   
+  .loginBlock{
+    float: right;
+  }
+
+  .loginBlock a{
+    color: rgb(64, 133, 110);
+  }
+  .LogPhoto{
+    margin-top: 10px;
+  }
+
+  .LogPhoto img{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+  }

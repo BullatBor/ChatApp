@@ -1,7 +1,8 @@
 import React from 'react'
 import classes from './ProfileInfo.module.css'
+import User from '../../../assets/userIcon.png'
 
-export const ProfileInfo = () => {
+export const ProfileInfo = (props) => {
   return (
     <div className={classes.Profile}>
       <div className={classes.mainImage}>
@@ -9,13 +10,25 @@ export const ProfileInfo = () => {
       </div>
       <div className={classes.descriptionBlock}>
         <div className={classes.avatarBack}>
-          <img src='https://e7.pngegg.com/pngimages/84/165/png-clipart-united-states-avatar-organization-information-user-avatar-service-computer-wallpaper-thumbnail.png'/>
+          <img src={props.profile.photos.large}/>
         </div>
         <div className={classes.ProfileInfo}>
-          <h2 className={classes.ProfileInfo_Name}>Иванов Иван</h2>
-          <div>
-            Москва МГУ
+          <h2 className={classes.ProfileInfo_Name}>{props.profile.fullName}</h2>
+          <div className={classes.status}>
+            <span>{props.profile.aboutMe}</span>
           </div>
+          <div className={classes.contacts}>
+            <a href='#'>{props.profile.contacts.github}</a>
+          </div>
+        </div>
+        <div className={classes.panelBtns}>
+          <div className={classes.messageBtn}>
+            <a><span>Сообщение</span></a>            
+          </div>
+          <div className={classes.friendBtn}>
+            <img src={User}/>
+          </div>
+            
         </div>
       </div>
     </div>
