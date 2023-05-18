@@ -2,6 +2,8 @@ import React from 'react'
 import { sendMessageCreator, updateNewMessageTextCreator } from '../../redux/dialogsReducer';
 import { Dialogs } from './Dialogs';
 import {connect} from "react-redux";
+import { Navigate } from 'react-router-dom';
+import { withAuthNavigate } from '../../hoc/withAuthNavigate';
 
 
 /*
@@ -19,9 +21,13 @@ const MessageWriting = (text) => {
 }
 */
 
+
+let AuthNavigateComponent = withAuthNavigate(Dialogs)
+
+
 let mapStateToProps = (state) => {//настраивает state для connect
   return {
-    DialogsPage: state.DialogsPage
+    DialogsPage: state.DialogsPage,
   }
 }
 
@@ -36,5 +42,5 @@ let mapDispatchToProps = (dispatch) => {//настраивает callback для
   }
 }
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthNavigateComponent)
 

@@ -4,32 +4,16 @@ import classes from '../Users.module.css'
 import ava from '../../../assets/ava.png'
 import addFriend from '../../../assets/addFriend.png'
 import access from '../../../assets/Ok.png'
-import { followAPI } from '../../../api/api';
-import { Preloader } from '../../common/preloader/Preloader'
 
 export const User = (props) => {
   let path = "/profile/" + props.state.id;
   let isFollowed = props.state.followed;
-  let LoaderCheck = true;
-
   const Followed = () => {
-  props.setFollowButton(true, props.state.id)
-  followAPI.follow(props.state.id).then(data => {
-    if(data.resultCode === 0){
-      props.followed(props.state.id)
-      props.setFollowButton(false, props.state.id)
-    }
-        })
+    props.followed(props.state.id, true)
   }
 
   const UnFollowed = () => {
-    props.setFollowButton(true, props.state.id)
-    followAPI.unfollow(props.state.id).then(data => {
-    if(data.resultCode === 0){
-      props.unfollowed(props.state.id)
-      props.setFollowButton(false, props.state.id)
-    }
-        })
+    props.followed(props.state.id, false)
    }
 
   return (

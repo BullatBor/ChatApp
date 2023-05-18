@@ -1,26 +1,31 @@
   import React from 'react'
 import { connect } from 'react-redux';
-import { follow, setCurrentPage, setLoader, setTotalCount, setUsers, unfollow, setFollowButton } from '../../redux/usersReducer';
+import { getUsersThunkCreator, 
+  ChangeUsersPageThunkCreator,
+  FollowThunkCreator
+} from '../../redux/usersReducer';
 import { Users } from './Users';
 import { Preloader } from '../common/preloader/Preloader';
 import { usersAPI } from '../../api/api';
+import { Navigate } from 'react-router-dom';
+import { withAuthNavigate } from '../../hoc/withAuthNavigate';
 
 export class UsersAPIComponent extends React.Component {
   componentDidMount(){
+    this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+    /* Перенеcено как Thunk в Reducer
+    this.props.setLoader(true)
     usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {//запрос на сервер
       this.props.setLoader(false)
       this.props.setUsers(data.items);
       this.props.setTotalCount(data.totalCount)     
 })
+*/
   }
-
+  
+  
   onPageChanged = (PageNumber) => {
-    this.props.setCurrentPage(PageNumber);
-    this.props.setLoader(true)
-    usersAPI.getUsers(PageNumber, this.props.pageSize).then(data => {
-      this.props.setLoader(false)
-      this.props.setUsers(data.items);
-  })
+    this.props.ChangeUsersPageThunkCreator(PageNumber, this.props.pageSize)
 }
   render() {
     return <>
@@ -32,20 +37,19 @@ export class UsersAPIComponent extends React.Component {
       totalUsersCount={this.props.totalUsersCount}
       pageSize = {this.props.pageSize}
       currentPage = {this.props.currentPage}
-      followed={this.props.follow}
-      unfollowed={this.props.unfollow}
-      setUsers={this.props.setUsers}
+      followed={this.props.FollowThunkCreator}
       onPageChanged={this.onPageChanged}
       users={this.props.users}
       isFetching={this.props.isFetching}
       isFollowing={this.props.isFollowing}
-      setFollowButton={this.props.setFollowButton}
       />     
       }
       </>
   }
 }
 
+
+let AuthNavigateComponent = withAuthNavigate(UsersAPIComponent)
 
 const mapStateToProps = (state) => {//Тут для отрисовки возвращаемый обьект сравнивается со старым объектом, после connect
   return {
@@ -54,7 +58,7 @@ const mapStateToProps = (state) => {//Тут для отрисовки возв�
     totalUsersCount: state.UsersPage.totalUsersCount,
     currentPage: state.UsersPage.currentPage,
     isFetching: state.UsersPage.isFetching,
-    isFollowing: state.UsersPage.followingInProgress
+    isFollowing: state.UsersPage.followingInProgress,
   }
 }
 /*
@@ -82,12 +86,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 */
 export let UsersContainer = connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setUsers,
-  setCurrentPage,
-  setTotalCount,
-  setLoader,
-  setFollowButton
-})(UsersAPIComponent);//есть свой отрисовщик у connect
+  getUsersThunkCreator,
+  ChangeUsersPageThunkCreator,
+  FollowThunkCreator
+})(AuthNavigateComponent);//есть свой отрисовщик у connect
 

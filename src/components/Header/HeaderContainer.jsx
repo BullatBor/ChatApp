@@ -1,27 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import Header from './Header';
-import { setUserData } from '../../redux/authReducer';
-import { setUserProfile } from '../../redux/profileReducer';
+import { AuthThunkCreator } from '../../redux/authReducer';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { profileAPI } from '../../api/api';
-import { authAPI } from '../../api/api';
+
 
 
 class HeaderClass extends React.Component {
   componentDidMount(){
-    authAPI.auth().then(data => {
-      if(data.resultCode === 0) {
-        let userId = this.props.router.params.userId;
-        if(!userId) userId = 2;
-        profileAPI.getProfileInfo(userId).then(data => {
-          this.props.setUserProfile(data);
-          })
-        let {id, email, login} = data.data;
-        this.props.setUserData(id, email, login)
-      }      
-  })
+    this.props.AuthThunkCreator(this.props.router.params.userId)
   }
   render(){
     return <Header {...this.props}/>
@@ -52,4 +39,4 @@ function withRoute(Component) {
 return ComponentWithRouterProp;
 }
 
-export let HeaderContainer = connect(mapStateToProps, {setUserData, setUserProfile})(withRoute(HeaderClass));
+export let HeaderContainer = connect(mapStateToProps, {AuthThunkCreator})(withRoute(HeaderClass));

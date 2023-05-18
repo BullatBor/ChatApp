@@ -31,7 +31,6 @@ export const Users = (props) => {
               unfollowed={props.unfollowed}
               setUsers={props.setUsers}
               isFollowing={props.isFollowing}
-              setFollowButton = {props.setFollowButton}
               />
             })
           }       

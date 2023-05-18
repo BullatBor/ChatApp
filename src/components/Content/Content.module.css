@@ -7,3 +7,11 @@
     grid-template-columns: 550px 450px;
     border-radius: 15px;
 }
+
+.wrapper{
+    position: relative;
+    grid-area: main;
+    background-color: #edeef0;
+    padding-top: 20px;
+    width: 1000px;
+  }

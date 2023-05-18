@@ -1,4 +1,5 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom';
 import classes from './Dialogs.module.css'
 import { DialogsSearch } from './DialogSearch/Dialogs';
 import { DialogItem } from './DialogsItem/DialogItem';
@@ -15,6 +16,8 @@ const MessageWriting = (e) => {
   let text = e.target.value;
   props.ChangeMessage(text)
 }
+
+
   return (
     <div className={classes.dialogs}>
       <div>

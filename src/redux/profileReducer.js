@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 const SET_USER_PROFILE = "SET-USER-PROFILE"
@@ -70,4 +72,12 @@ export const setLoader = (load) => ({
     isFetching: load
     })
 
+export const getProfileThunkCreator = (userId = 2) => {
+    return (dispatch) => {
+        usersAPI.getProfileInfo(userId).then(data => {
+                    dispatch(setUserProfile(data));
+                    dispatch(setLoader(false))
+                })
+            }      
+    }
 export default profileReducer;

@@ -1,3 +1,5 @@
+import { followAPI, usersAPI } from "../api/api";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET-USERS"
@@ -99,5 +101,48 @@ export const setFollowButton = (load, userId) => ({
     isFollowing: load,
     userId
     })
+
+    export const getUsersThunkCreator = (currentPage, pageSize) => {//ThunkCreator
+        return (dispatch) => { //Thunk функция которая выполняет асинхр работу и делает диспатчи
+            dispatch(setLoader(true))
+            usersAPI.getUsers(currentPage, pageSize).then(data => {//запрос на сервер
+              dispatch(setLoader(false))
+              dispatch(setUsers(data.items))
+              dispatch(setTotalCount(data.totalCount))     
+        })
+    }
+}
+
+    export const ChangeUsersPageThunkCreator = (PageNumber, pageSize) => {
+        return (dispatch) => {
+        dispatch(setCurrentPage(PageNumber))
+        dispatch(setLoader(true))
+        usersAPI.getUsers(PageNumber, pageSize).then(data => {
+        dispatch(setLoader(false))
+        dispatch(setUsers(data.items))
+    })
+    }
+}
+
+export const FollowThunkCreator = (id, isFollow) => {
+    return (dispatch) => {
+        dispatch(setFollowButton(true, id))
+        isFollow 
+        ?
+        usersAPI.follow(id).then(data => {
+          if(data.resultCode === 0){
+            dispatch(follow(id))
+            dispatch(setFollowButton(false, id))
+          }
+        })
+        :
+        usersAPI.unfollow(id).then(data => {
+            if(data.resultCode === 0){
+              dispatch(unfollow(id))
+              dispatch(setFollowButton(false, id))
+            }
+        })
+}
+}
     
 export default usersReducer;  
