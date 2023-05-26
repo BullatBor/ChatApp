@@ -9,6 +9,7 @@ import { Preloader } from '../common/preloader/Preloader';
 import { usersAPI } from '../../api/api';
 import { Navigate } from 'react-router-dom';
 import { withAuthNavigate } from '../../hoc/withAuthNavigate';
+import { compose } from 'redux';
 
 export class UsersAPIComponent extends React.Component {
   componentDidMount(){
@@ -48,9 +49,6 @@ export class UsersAPIComponent extends React.Component {
   }
 }
 
-
-let AuthNavigateComponent = withAuthNavigate(UsersAPIComponent)
-
 const mapStateToProps = (state) => {//Тут для отрисовки возвращаемый обьект сравнивается со старым объектом, после connect
   return {
     users: state.UsersPage.users,
@@ -61,33 +59,14 @@ const mapStateToProps = (state) => {//Тут для отрисовки возв�
     isFollowing: state.UsersPage.followingInProgress,
   }
 }
-/*
-const mapDispatchToProps = (dispatch) => {
-  return {
-    followed: (id) => {
-      dispatch(followAC(id));
-    },
-    unfollowed: (id) => {
-      dispatch(unfollowAC(id))
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users))
-    },
-    setCurrentPage: (page) => {
-      dispatch(setCurrentPageAC(page))
-    },
-    setTotalCount: (count) => {
-      dispatch(setTotalCountAC(count))
-    },
-    setLoader: (load) => {
-      dispatch(setLoaderAC(load))
-    }
-  }
-}
-*/
-export let UsersContainer = connect(mapStateToProps, {
-  getUsersThunkCreator,
-  ChangeUsersPageThunkCreator,
-  FollowThunkCreator
-})(AuthNavigateComponent);//есть свой отрисовщик у connect
+
+export let UsersContainer = compose(
+  connect(mapStateToProps, {
+    getUsersThunkCreator,
+    ChangeUsersPageThunkCreator,
+    FollowThunkCreator
+  }),
+  withAuthNavigate
+)(UsersAPIComponent)
+
 

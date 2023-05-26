@@ -8,10 +8,12 @@ import { DialogsContainer } from '../Dialogs/DialogsContainer';
 import { UsersContainer } from '../Friends/UsersContainer';
 import { ProfileContainer } from '../Content/ContentContainer';
 import { Login } from '../Login/Login';
+import { connect } from 'react-redux';
+import { withAuthNavigate } from '../../hoc/withAuthNavigate';
 
 export const MainPage = () => {
   return (
-    <div>
+    <>
       <Menu/>
         <div className={classes.wrapper}>
         <Routes>
@@ -25,9 +27,12 @@ export const MainPage = () => {
           <Route path='/settings' element={<Settings/>}/>
         </Routes> 
       </div>      
-    </div>
+    </>
   );
 }
 
 
-export default MainPage;
+let AuthNavigateComponent = withAuthNavigate(MainPage)//HOC
+
+
+export let MainPageContainer = connect()(AuthNavigateComponent)

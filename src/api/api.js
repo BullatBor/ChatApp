@@ -19,11 +19,29 @@ export const usersAPI = {
         return axiosInstance.delete(`follow/${id}`).then(responce => responce.data)
     },
     async getProfileInfo(id) {
-        return axiosInstance.get(`profile/${id}`)
-        .then(responce => responce.data)
-} 
+        console.warn("Obsolete method. Please profileAPI object.")
+        return profileAPI.getProfileInfo(id)
+    }
 }
 
+export const profileAPI = {
+    async getProfileInfo(id) {
+        return axiosInstance.get(`profile/${id}`)
+        .then(responce => responce.data)
+    },
+    async getProfileStatus(id) {
+        return axiosInstance.get(`profile/status/${id}`)
+        .then(responce => {
+           return responce.data
+        })
+    },
+    async updateStatus(status) {
+        return axiosInstance.put(`profile/status`, {status: status})
+        .then(responce => {
+            return responce.data
+        })
+    }
+}
 
 export const authAPI = {
     async auth() {
