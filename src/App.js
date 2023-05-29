@@ -7,8 +7,8 @@ import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 import { UsersContainer } from './components/Friends/UsersContainer';
 import { ProfileContainer } from './components/Content/ContentContainer';
 import { HeaderContainer } from './components/Header/HeaderContainer';
-import { Login } from './components/Login/Login';
 import { NewsContainer } from './components/News/NewsContainer';
+import { Login} from './components/Login/LoginContainer';
 
 function App() {//Делаю чтобы меню пропадало при входе без логина, файл MainPage
   return (

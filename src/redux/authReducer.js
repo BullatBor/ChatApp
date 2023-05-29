@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import { authAPI, usersAPI } from "../api/api";
 import { setUserProfile } from "./profileReducer";
 
@@ -39,6 +40,26 @@ export const setUserData = (userId, email, login) => ({
                 })
               let {id, email, login} = data.data;
               dispatch(setUserData(id, email, login))
+            }      
+        })
+    }
+}
+    
+export const LoginThunkCreator = (email, password, rememberMe, captcha) => {
+    return (dispatch) => {    
+        authAPI.login(email, password, rememberMe, captcha).then(data => {
+            if(data.resultCode === 0) {
+                let userId = data.data.userId;
+                authAPI.auth().then(data => {
+                    if(data.resultCode === 0) {
+                        usersAPI.getProfileInfo(userId).then(data => {//для получения фотки на кнопку логина
+                        dispatch(setUserProfile(data));
+                        debugger
+                        })
+                      let {id, email, login} = data.data;
+                      dispatch(setUserData(id, email, login))                    
+                    }      
+                })
             }      
         })
     }

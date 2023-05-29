@@ -71,3 +71,11 @@
 .signBtn:hover{
     background-color: rgb(107, 151, 233);
 }
+
+.ErrorInput{
+    border: red 1px solid;
+}
+
+.ErrorInputPass{
+    border: red 1px solid;
+}

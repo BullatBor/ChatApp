@@ -6,8 +6,6 @@ import { getUsersThunkCreator,
 } from '../../redux/usersReducer';
 import { Users } from './Users';
 import { Preloader } from '../common/preloader/Preloader';
-import { usersAPI } from '../../api/api';
-import { Navigate } from 'react-router-dom';
 import { withAuthNavigate } from '../../hoc/withAuthNavigate';
 import { compose } from 'redux';
 
