@@ -7,7 +7,7 @@ import { RightColumn } from './RightColumn/RightColumn'
 export const Content = (props) => {
   return (
     <div className={classes.Profile}>
-      <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+      <ProfileInfo avatar={props.avatar} profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
       <div className={classes.ProfilePosts}>
         <div>
           <LeftColumn/>

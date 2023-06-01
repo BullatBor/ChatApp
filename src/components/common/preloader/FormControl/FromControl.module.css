@@ -1,0 +1,21 @@
+.Input{
+    padding: 8px 12px;
+    background-color: #e0e0e2;
+    border: #c9c9cc 0.4px solid ;
+    border-radius: 8px;
+    width: 240px;
+    height: 18px;
+}
+
+.Inputs span{
+    font-size: 10px;
+    color: red;
+}
+
+.Inputs {
+    margin-bottom: 15px;
+}
+
+.ErrorInput{
+    border: red 1px solid;
+}

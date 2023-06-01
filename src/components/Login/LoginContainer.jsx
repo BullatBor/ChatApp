@@ -4,10 +4,11 @@ import classname from "classnames"
 import Logo from "../../assets/JSIcon.png"
 import { Formik, Form, Field} from 'formik';
 import { LoginThunkCreator, AuthThunkCreator } from '../../redux/authReducer';
-import { requiredField } from '../../utils/validators';
+import { requiredField, ValidateEmail, ValidatePassword } from '../../utils/validators';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { LoginInput, PasswordInput } from '../common/preloader/FormControl/FormControl';
 
 
 const LoginForm = (props) => {
@@ -26,45 +27,29 @@ const LoginForm = (props) => {
     }, 400);
   }
 
-  const ValidateValues = (values) => {
-    const errors = {};
-    /*
-    if(!values.password){
-      errors.password = 'Required';
-    } else if (
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(values.password)
-    ) {
-      errors.password = 'Invalid password';
-    }*/
-    if (!values.login) {
-      errors.email = 'Required';
-    } else if (
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(values.login)
-    ) {
-      errors.login = 'Invalid email address';
-    }
-    return errors;
-  }
-
+ 
   return(
             <Formik
               initialValues={{ login: '', password: '', rememberMe: false }}
               onSubmit={submit}
-              validate={ValidateValues}
             >
-              {({errors, touched}) => (
+              {({errors, touched, isSubmitting}) => (
                 <Form>
                 <div>
-                  <Field validate={[requiredField]} className={classname(classes.Input, {[classes.ErrorInput]: errors.login && touched.login})} name={"login"} placeholder={'Телефон или почта'}/>
+                  <Field 
+                   name={"login"} placeholder={'Телефон или почта'} component={LoginInput} validate={requiredField}
+                   />
                 </div>
                 <div>
-                  <Field validate={[requiredField]} className={classname(classes.Input, {[classes.ErrorInputPass]: errors.password && touched.password})} name={"password"} placeholder={'Пароль'}/>
+                  <Field 
+                    name={"password"} placeholder={'Пароль'} validate={requiredField} component={PasswordInput}
+                  />
                 </div>
                 <div>
                   <Field name={"rememberMe"} type={"checkbox"}/> Запомнить меня
                 </div>
                 <div>
-                  <button className={classes.signBtn} type="submit">Войти</button>
+                  <button className={classes.signBtn} type="submit" disabled={isSubmitting}>Войти</button>
                 </div>
               </Form>
               )}             

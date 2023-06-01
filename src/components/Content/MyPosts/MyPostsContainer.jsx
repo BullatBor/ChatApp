@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/profileReducer'
+import { addPost } from '../../../redux/profileReducer'
 import { MyPosts } from './MyPosts'
 
 /*
@@ -23,20 +23,12 @@ export const MyPostsContainer = (props) => {
 const mapStateToProps = (state) => {//Тут для отрисовки возвращаемый обьект сравнивается со старым объектом, после connect, и это пропсы которые отправляются в MyPost
   return {
     posts: state.ProfilePage.posts,
-    newPostText: state.ProfilePage.PostText
+    newPostText: state.ProfilePage.PostText,
+    avatar: state.ProfilePage.AvatarImg
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addPost: () => {
-      dispatch(addPostActionCreator());
-    },
-    updateNewPostText: (text) => {
-      dispatch(updateNewPostTextActionCreator(text))
-    }
-  }
-}
 
-export let MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);//есть свой отрисовщик у connect
+
+export let MyPostsContainer = connect(mapStateToProps, {addPost})(MyPosts);//есть свой отрисовщик у connect
 

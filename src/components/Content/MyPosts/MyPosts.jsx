@@ -1,32 +1,49 @@
+import classNames from 'classnames'
+import { Field, Form, Formik } from 'formik'
 import React from 'react'
+import { Textarea } from '../../common/preloader/FormControl/FormControl'
 import classes from './MyPosts.module.css'
 import { Post } from './Post/Post'
 
 
 export const MyPosts= (props) => {
-  let NewPost = React.createRef()
-  const onAddPost = () => {
-    props.addPost();
+  const onAddPost = (values, { setSubmitting }) => {
+    props.addPost(values.textField);
+    values.textField = ""
+    setTimeout(() => {
+      setSubmitting(false);
+    }, 400);
   }
-
-  const ChangeTextArea = () => {
-    let text = NewPost.current.value;
-    props.updateNewPostText(text);
+ const validateText = (value) => {
+  let error;
+  if(!value) {
+    error = 'Required';
+  } else if(value.length > 30){
+    error = 'Invalid email address';
   }
+return error
+ }
+  
   let mass = props.posts;
   return (
     <div className={classes.content}>
       <div className={classes.postsBlock}>
-        <h3>My Posts</h3>
-        <div>
-          <textarea 
-          onChange={ChangeTextArea}
-          ref={NewPost}
-          value={props.newPostText}
-          ></textarea>
-          <div>
-            <button onClick={onAddPost}>Add post</button>
-          </div>
+        <div className={classes.NewPost}>
+          <img src={props.avatar} />
+          <Formik
+          initialValues={{ textField: ''}}
+          onSubmit={onAddPost}
+          >{({errors, touched, isSubmitting}) => (
+            <Form>
+              <Field className={classes.NewPostInput} component={Textarea} name={"textField"} validate={validateText} placeholder="Что у вас нового?"/>
+              {
+                touched.textField &&
+                <button className={classNames(classes.NewPostBtn, {[classes.BtnDisabled]: errors.textField})} type="submit" disabled={isSubmitting}>Опубликовать</button>
+              }
+              
+            </Form>
+          )}
+          </Formik>
         </div>
           <div className={classes.posts}>
             { 

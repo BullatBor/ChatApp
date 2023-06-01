@@ -11,15 +11,6 @@
     box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
 }
 
-.Input{
-    padding: 8px 12px;
-    background-color: #e0e0e2;
-    border: #c9c9cc 0.4px solid ;
-    border-radius: 8px;
-    width: 240px;
-    height: 18px;
-    margin-bottom: 20px;
-}
 
 .logo h1{
     margin: 0;
@@ -70,12 +61,4 @@
 
 .signBtn:hover{
     background-color: rgb(107, 151, 233);
-}
-
-.ErrorInput{
-    border: red 1px solid;
-}
-
-.ErrorInputPass{
-    border: red 1px solid;
 }

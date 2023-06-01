@@ -11,7 +11,7 @@ export const ProfileInfo = (props) => {
       </div>
       <div className={classes.descriptionBlock}>
         <div className={classes.avatarBack}>
-          <img src={props.profile.photos.large}/>
+          <img src={props.avatar}/>
         </div>
         <div className={classes.ProfileInfo}>
           <h2 className={classes.ProfileInfo_Name}>{props.profile.fullName}</h2>

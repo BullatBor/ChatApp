@@ -19,7 +19,7 @@ class ContentContainer extends React.Component {
                 ?
                 <Preloader/>
                 :
-                <Content {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateProfileStatusThunkCreator}/>
+                <Content {...this.props} />
             }
             </>
             
@@ -31,7 +31,8 @@ const mapStateToProps = (state) => ({
     profile: state.ProfilePage.profile,
     isFetching: state.ProfilePage.isFetching,
     status: state.ProfilePage.status,
-    userId: state.AuthPage.userId
+    userId: state.AuthPage.userId,
+    avatar: state.ProfilePage.AvatarImg
 })
 
 function withRouter(Component) {

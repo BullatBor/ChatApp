@@ -12,10 +12,9 @@ let initialState = {
         {id: 2, message: "sdfsdfsefsef", likesCount: 12},
         {id: 3, message: "sdfsdfsefsef", likesCount: 12}
     ],
-    PostText: "Введите текст",
     profile: null,
     isFetching: true,
-    AvatarImg: null,
+    AvatarImg: "https://atmstudio.su/d/warcraft-arthas-collectors-2_10.jpg",
     status: ""
 }
 
@@ -23,8 +22,8 @@ const profileReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_POST: {
             let newPost = {
-                id: 4,
-                message: state.PostText,
+                id: state.posts.length + 1,
+                message: action.PostText,
                 likesCount: 0
             };
             return {
@@ -33,17 +32,11 @@ const profileReducer = (state = initialState, action) => {
                 PostText: ''
             };//Чтобы redux видел изменения, и чтобы сравнивал со старым state возращаем новый элемент
         }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                PostText: action.newText
-            };//Чтобы redux видел изменения, делаем копию
-        }
         case SET_USER_PROFILE: {
             return {
                 ...state,
                 profile: action.profile,
-                AvatarImg: action.profile.photos.large
+                AvatarImg: state.AvatarImg
             };//Чтобы redux видел изменения, делаем копию
         }
         case SET_LOADER:
@@ -61,15 +54,10 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({
-    type: ADD_POST
+export const addPost = (text) => ({
+    type: ADD_POST,
+    PostText: text
   })
-
-export const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text
-  })
-
 export const setUserProfile = (profile) => ({
 type: SET_USER_PROFILE,
 profile
