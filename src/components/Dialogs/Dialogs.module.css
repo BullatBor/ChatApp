@@ -181,7 +181,7 @@
     display: flex;
    }
 
-   .MessageInputItem{
+   .MessageInputItem input{
     border: #c9c9cc 0.4px solid; 
     border-radius: 6px;
    }

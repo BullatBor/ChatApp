@@ -1,6 +1,5 @@
 import React from 'react'
 import classes from "./Login.module.css"
-import classname from "classnames"
 import Logo from "../../assets/JSIcon.png"
 import { Formik, Form, Field} from 'formik';
 import { LoginThunkCreator, AuthThunkCreator } from '../../redux/authReducer';
@@ -14,13 +13,6 @@ import { LoginInput, PasswordInput } from '../common/preloader/FormControl/FormC
 const LoginForm = (props) => {
   const submit = (values, { setSubmitting }) => {
     props.LoginThunk(values.login, values.password, values.rememberMe, true)
-    /*
-    authAPI.login(values.login, values.password, values.rememberMe, true).then(data => {
-      debugger
-      if(data.resultCode === 0) {
-        let {id, email, login} = data.data;
-      }     
-  })*/
     setTimeout(() => {
       <Navigate to={"/profile"}/>
       setSubmitting(false);
@@ -49,8 +41,11 @@ const LoginForm = (props) => {
                   <Field name={"rememberMe"} type={"checkbox"}/> Запомнить меня
                 </div>
                 <div>
-                  <button className={classes.signBtn} type="submit" disabled={isSubmitting}>Войти</button>
-                </div>
+                  <button className={classes.signBtn} 
+                  type="submit" disabled={isSubmitting}>
+                    Войти
+                    </button>
+                </div> 
               </Form>
               )}             
             </Formik>

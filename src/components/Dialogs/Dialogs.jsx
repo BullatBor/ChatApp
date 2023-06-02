@@ -5,16 +5,15 @@ import { DialogsSearch } from './DialogSearch/Dialogs';
 import { DialogItem } from './DialogsItem/DialogItem';
 import { FriendsSlide } from './FriendsSlide/FriendsCarousel';
 import { Message } from './MessageItem/Message';
+import { Formik, Form, Field} from 'formik';
+import { requiredField, ValidateMessage } from '../../utils/validators';
+import { MessageInput } from '../common/preloader/FormControl/FormControl';
 
 
 
 export const Dialogs = (props) => {
-const onSendMessage = () => {
-  props.SendMessage()
-}
-const MessageWriting = (e) => {
-  let text = e.target.value;
-  props.ChangeMessage(text)
+const onSendMessage = (value) => {
+  props.SendMessage(value)
 }
 
 
@@ -44,14 +43,19 @@ const MessageWriting = (e) => {
         <div className={classes.MessageInputBlock}>
             <div className={classes.MessageInput}>
               <div className={classes.MessageInputItem}>
-                <input className={classes.SearchInput} 
-                onChange={MessageWriting}
-                value={props.DialogsPage.newMessageText}
-                placeholder="Введите сообщение"
+                <Formik
+                  initialValues={ { message: '' }}
+                  onSubmit={onSendMessage}
                 >
-                </input>  
+                  {({errors, touched, isSubmitting}) => (
+                  <Form>
+                    <Field name={"message"} placeholder="Введите сообщение" validate={requiredField} component={MessageInput}/>
+                    <button type='submit' disabled={isSubmitting}>отправить</button> 
+                  </Form>
+                  )}
+                </Formik>  
               </div>  
-              <button onClick={onSendMessage}>отправить</button>  
+               
             </div>            
         </div>
 

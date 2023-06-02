@@ -40,3 +40,16 @@ export const PasswordInput = ({field, form, ...props}) => {
           </div>
       )
   }
+
+
+  export const MessageInput = ({field, form, ...props}) => {
+    return (
+        <div className={classes.Inputs}>
+            <div>
+                <input className={classes.messageInput} 
+                {...field} {...props}
+                />
+            </div>
+        </div>
+    )
+}
