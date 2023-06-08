@@ -10,12 +10,16 @@ const Header = (props) => {
         <div className={classes.loginBlock}>
           {
             props.isAuth 
-            ?
+            &&
             <div className={classes.LogPhoto}>
-              <img src={props.avatar}/>
+              <img src={props.avatar} onClick={props.LogoutThunkCreator}/>
             </div>
-            :
-            <NavLink to={'/login'}>Login</NavLink>
+          }
+          {
+            props.isShow && 
+            <div className={classes.modal}>
+              Выход
+            </div>
           }
         </div>
       </header>

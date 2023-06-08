@@ -49,9 +49,15 @@ export const authAPI = {
         .then(responce => responce.data)
     },
 
-    async login(email, password, rememberMe, captcha) {
+    async login(email, password, rememberMe = false, captcha) {
         return axiosInstance.post(`auth/login`, {email: email, password: password, rememberMe: rememberMe, captcha: captcha})
         .then(responce => {           
+            return responce.data
+        })
+    },
+
+    async logout() {
+        return axiosInstance.delete(`auth/login`).then(responce => {           
             return responce.data
         })
     }

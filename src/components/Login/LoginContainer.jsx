@@ -11,8 +11,8 @@ import { LoginInput, PasswordInput } from '../common/preloader/FormControl/FormC
 
 
 const LoginForm = (props) => {
-  const submit = (values, { setSubmitting }) => {
-    props.LoginThunk(values.login, values.password, values.rememberMe, true)
+  const submit = (values, { setSubmitting, setStatus }) => {
+    props.LoginThunk(values.login, values.password, values.rememberMe, true, setStatus)
     setTimeout(() => {
       <Navigate to={"/profile"}/>
       setSubmitting(false);
@@ -25,7 +25,7 @@ const LoginForm = (props) => {
               initialValues={{ login: '', password: '', rememberMe: false }}
               onSubmit={submit}
             >
-              {({errors, touched, isSubmitting}) => (
+              {({errors, touched, isSubmitting, status}) => (
                 <Form>
                 <div>
                   <Field 
@@ -40,11 +40,14 @@ const LoginForm = (props) => {
                 <div>
                   <Field name={"rememberMe"} type={"checkbox"}/> Запомнить меня
                 </div>
-                <div>
+                <div className={classes.btn}>
                   <button className={classes.signBtn} 
-                  type="submit" disabled={isSubmitting}>
-                    Войти
-                    </button>
+                    type="submit" disabled={isSubmitting}>
+                      Войти
+                  </button>
+                  {
+                    status && <span>{status.error}</span>
+                  }
                 </div> 
               </Form>
               )}             
@@ -53,7 +56,11 @@ const LoginForm = (props) => {
 }
 
 export class LoginContainer extends React.Component {
+
   render() {
+    if(this.props.isAuth) {
+    return <Navigate to={"/profile"} />
+    }
     return (
       <div className={classes.LoginForm}>       
           <div className={classes.LoginPanel}>                      

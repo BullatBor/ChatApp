@@ -2,6 +2,16 @@ import classNames from "classnames";
 import React from "react";
 import classes from "./FromControl.module.css"
 
+
+export const FormControl = ({field, form, children, ...props}) => {
+    return (
+        <div>
+            {props.children}
+        </div>
+    )
+}
+
+
 export const Textarea = ({field, form, ...props}) => {
     return (
         <div>

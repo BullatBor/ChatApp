@@ -9,6 +9,7 @@
   
   .loginBlock{
     float: right;
+    
   }
 
   .loginBlock a{
@@ -23,4 +24,10 @@
     width: 32px;
     height: 32px;
     border-radius: 50px;
+  }
+
+  .modal {
+    position:relative;
+    float: left;
+    z-index: 9999;
   }

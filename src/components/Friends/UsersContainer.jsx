@@ -1,6 +1,7 @@
-  import React from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
-import { getUsersThunkCreator, 
+import {
+  getUsersThunkCreator,
   ChangeUsersPageThunkCreator,
   FollowThunkCreator
 } from '../../redux/usersReducer';
@@ -8,9 +9,10 @@ import { Users } from './Users';
 import { Preloader } from '../common/preloader/Preloader';
 import { withAuthNavigate } from '../../hoc/withAuthNavigate';
 import { compose } from 'redux';
+import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from '../../redux/users-selectors';
 
 export class UsersAPIComponent extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
     /* Перенеcено как Thunk в Reducer
     this.props.setLoader(true)
@@ -21,33 +23,33 @@ export class UsersAPIComponent extends React.Component {
 })
 */
   }
-  
-  
+
+
   onPageChanged = (PageNumber) => {
     this.props.ChangeUsersPageThunkCreator(PageNumber, this.props.pageSize)
-}
+  }
   render() {
     return <>
-    {
-    this.props.isFetching 
-    ? <Preloader/>
-     :
-      <Users
-      totalUsersCount={this.props.totalUsersCount}
-      pageSize = {this.props.pageSize}
-      currentPage = {this.props.currentPage}
-      followed={this.props.FollowThunkCreator}
-      onPageChanged={this.onPageChanged}
-      users={this.props.users}
-      isFetching={this.props.isFetching}
-      isFollowing={this.props.isFollowing}
-      />     
+      {
+        this.props.isFetching
+          ? <Preloader />
+          :
+          <Users
+            totalUsersCount={this.props.totalUsersCount}
+            pageSize={this.props.pageSize}
+            currentPage={this.props.currentPage}
+            followed={this.props.FollowThunkCreator}
+            onPageChanged={this.onPageChanged}
+            users={this.props.users}
+            isFetching={this.props.isFetching}
+            isFollowing={this.props.isFollowing}
+          />
       }
-      </>
+    </>
   }
 }
 
-const mapStateToProps = (state) => {//Тут для отрисовки возвращаемый обьект сравнивается со старым объектом, после connect
+/*const mapStateToProps = (state) => {//Тут для отрисовки возвращаемый обьект сравнивается со старым объектом, после connect
   return {
     users: state.UsersPage.users,
     pageSize: state.UsersPage.pageSize,
@@ -55,6 +57,18 @@ const mapStateToProps = (state) => {//Тут для отрисовки возв�
     currentPage: state.UsersPage.currentPage,
     isFetching: state.UsersPage.isFetching,
     isFollowing: state.UsersPage.followingInProgress,
+  }
+}*/
+
+
+const mapStateToProps = (state) => {//Тут для отрисовки возвращаемый обьект сравнивается со старым объектом, после connect
+  return {
+    users: getUsers(state),//селекторы для выборки из state
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    isFollowing: getFollowingInProgress(state),
   }
 }
 
