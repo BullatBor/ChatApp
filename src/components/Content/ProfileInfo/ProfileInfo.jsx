@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './ProfileInfo.module.css'
 import User from '../../../assets/userIcon.png'
-import { ProfileStatus } from './ProfileStatus'
+import { ProfileStatusWithHooks } from './ProfileStatusWithHooks'
 
 export const ProfileInfo = (props) => {
   return (
@@ -15,7 +15,7 @@ export const ProfileInfo = (props) => {
         </div>
         <div className={classes.ProfileInfo}>
           <h2 className={classes.ProfileInfo_Name}>{props.profile.fullName}</h2>
-          <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+          <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
           <div className={classes.contacts}>
             <a href='#'>{props.profile.contacts.github}</a>
           </div>
