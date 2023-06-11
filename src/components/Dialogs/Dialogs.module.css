@@ -1,0 +1,193 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+    border-radius: 15px;
+}
+
+.dialogsItems{
+    background-color: white;
+    text-decoration: none;
+    border-top: #c9c9cc 0.4px solid;
+    border-left: #c9c9cc 0.4px solid;
+    border-bottom: #c9c9cc 0.4px solid;
+}
+.dialog_name{
+    padding-top: 12.5px;
+    width: 229px;
+    border-bottom:  #c9c9cc 0.4px solid;
+}
+.dialog_name:hover{
+    border-bottom:  0;
+}
+
+.dialog_name a{
+    text-decoration: none;
+}
+
+.dialog{
+    display: flex;
+    cursor: pointer;
+    padding-left: 15px;
+    
+}
+
+.dialog:hover{
+    background-color: rgb(236, 244, 250);
+    border-bottom:  #c9c9cc 0.4px solid transparent;
+}
+
+.dialog_photo{
+    width: 53px;
+    height: 62px;
+}
+.dialog img{
+    width: 46px;
+    height: 46px;
+    border-radius: 30px;
+    margin: 9px 7px 7px 0;
+}
+
+.dialogsItems a.activeLink {
+    color: gold;
+  }
+ 
+.messages{
+    height: 650px;
+    position: relative;
+    background-color: white;
+    border-top: #c9c9cc 0.4px solid;
+    border-right: #c9c9cc 0.4px solid;
+    border-bottom: #c9c9cc 0.4px solid;
+    border-left: #c9c9cc 0.4px solid;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.message{
+    cursor: pointer;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.searchBlock{
+ background-color: white;
+ border-top-left-radius: 15px;
+ border: #c9c9cc 0.4px solid;
+}
+
+.searchBlock input{
+    border: none;
+    margin-left: 10px;
+    border-left-width: 15px;
+    padding: 17px 10px 17px 26px;
+   }
+
+   .SearchInput:active,:focus{
+  outline: 0;
+  border: none;
+   }
+
+   .NavName{
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: #c9c9cc 0.4px solid;
+   }
+   .FriendsCarousel{
+    display: flex;
+    background-color: white;
+    height: 86px;
+    border-bottom: #c9c9cc 0.4px solid;
+    border-left: #c9c9cc 0.4px solid;
+    border-right: #c9c9cc 0.4px solid;
+    margin-bottom: 3px;     
+   }
+   .FriendPhoto img{
+    width: 44px;
+    height: 44px;
+    border-radius: 20px;
+   }
+   .FriendPhoto{
+    width: 70px;
+    height: 66px;
+    text-align: center;
+    padding: 8px 0 0 4px;
+    cursor: pointer;
+   }
+   .FriendPhoto span{
+    margin-top: 8px;
+    font-size: 12px;
+   }
+
+   .btnLeft{
+    margin-left: 5px;
+    position: absolute;
+    margin-top: 25px;
+    background-color: white;
+    border-radius: 15px;
+    width: 26px;
+    height: 26px;
+    opacity: 0.7;
+    cursor: pointer;
+   }
+   .btnRight{
+    position: absolute;
+    margin-left: 265px;
+    margin-top: 25px;
+    background-color: white;
+    border-radius: 15px;
+    width: 26px;
+    height: 26px;
+    opacity: 0.7;
+    cursor: pointer;
+   }
+   .btnLeft img{
+    width: 26px;
+    height: 26px;
+    opacity: 0.5;
+   }
+   .btnRight img{
+    width: 26px;
+    height: 26px;
+    opacity: 0.5;
+   }
+
+   .btnLeft:hover,
+   .btnRight:hover{
+    opacity: 1;
+   }
+
+   .MessageInputBlock{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 700px;
+    display: flex;
+    bottom: 0;
+    border-top:#c9c9cc 0.4px solid;
+ 
+   }
+   .MessageInput input{
+    font-size: 14px;
+    border: none;
+    border-left-width: 15px;
+    padding: 9px 74px 10px 13px;
+    border-radius: 6px;
+   }
+
+   .MessageInput{
+    padding-top: 12px;
+    padding-left: 10px;
+    margin-bottom: 12px;
+    display: flex;
+   }
+
+   .MessageInputItem{
+    border: #c9c9cc 0.4px solid; 
+    border-radius: 6px;
+   }
+
+   .messageList{
+
+   }
+
+

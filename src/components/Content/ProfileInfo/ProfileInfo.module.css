@@ -1,0 +1,106 @@
+.Profile{
+    display: block;
+}
+.descriptionBlock{
+    padding: 10px;
+    border: #b0b0b1 1px solid;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: -25px;
+    padding: 20px;
+    z-index: 2;
+    display: flex;
+}
+
+.avatarBack{
+    background-color: white;
+    border-radius: 100px;
+    margin-top: -85px;
+    width: 160px;
+    height: 160px;
+    border: #b0b0b1 1px solid;
+    z-index: 1;
+}
+.avatarBack img{
+  width: 150px;
+  height: 150px;
+  margin: 4px;
+  border: #b0b0b1 1px solid;
+  border-radius: 100px;
+}
+
+.mainImage{
+    background-image: url("https://images.justwatch.com/backdrop/257130664/s640");
+    background-size: cover;
+    height: 300px;
+    border-radius: 15px;
+    border: #b0b0b1 0.4px solid;
+    background-color: white;
+    z-index: 0;
+}
+
+.ProfileInfo{
+    margin: 0 10px;
+}
+
+h2{
+    margin: 0 auto;
+    padding: 0;
+}
+
+.ProfileInfo_Name{
+}
+
+.status{
+    font-weight: 400;
+    font-size: 13px;
+    margin: 6px auto 0px 0px;
+}
+.contacts{
+    margin-top: 6px;
+    --padding-left-right: 5px;
+}
+.contacts a{
+    text-decoration: none;
+    color: #626d7a;
+}
+
+.messageBtn{
+    border-radius: 12px;
+    background-color: #447bba ;
+    height: 32px;
+    cursor: pointer;
+}
+
+.messageBtn:hover{
+    background-color: #518aca ;
+}
+
+.messageBtn a{
+    font-weight: 600;
+    color: white;
+    padding: 0 16px;
+}
+
+.panelBtns{
+    display: flex;
+    margin-left: 110px;
+    height: 32px;
+}
+
+.friendBtn img{
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+}
+
+.friendBtn{
+    background-color: #eaf4ff;
+    border-radius: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.friendBtn:hover{
+    background-color: #ddecfc;
+}

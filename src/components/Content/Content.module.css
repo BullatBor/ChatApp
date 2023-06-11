@@ -1,0 +1,9 @@
+.TwoColumn{
+    display: flex;
+}
+
+.ProfilePosts{
+    display: grid;
+    grid-template-columns: 550px 450px;
+    border-radius: 15px;
+}

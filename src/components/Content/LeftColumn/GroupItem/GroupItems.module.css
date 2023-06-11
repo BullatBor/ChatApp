@@ -1,0 +1,9 @@
+.Layer {
+    
+    margin-top: 16px;
+    width: 550px;
+    height: 20px;
+    background-color: white;
+    border-radius: 15px;
+    border: #b0b0b1 1px solid;
+}

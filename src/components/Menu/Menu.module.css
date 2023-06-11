@@ -1,0 +1,26 @@
+.nav{
+  grid-area: bar;
+  background-color: #edeef0;
+  padding: 20px;
+  }
+
+  .item{
+    align-items: center;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .item:hover{
+    background-color: #b8babd;
+  }
+
+  .item a {
+    padding-left: 6px;
+    height: 30px;
+    text-decoration: none;
+    color: #2a5885;
+  }
+
+  .item a.activeLink {
+    color: rgb(114, 113, 109);
+  }
