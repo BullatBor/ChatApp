@@ -12,7 +12,6 @@ let initialState = {
     login: null,
     isFetching: true,
     isAuth: false,
-    showModal: false
 }
 
 const authReducer = (state = initialState, action) => {
@@ -37,10 +36,6 @@ export const setUserData = (userId, email, login, isAuth) => ({
     payload:{userId, email, login, isAuth}
   })
 
-  export const showModal = (isShow) => ({
-    type: SHOW_MODAL,
-    isShow: isShow
-  })
 
   export const AuthThunkCreator = (userId = 2) => {
     return (dispatch) => {
