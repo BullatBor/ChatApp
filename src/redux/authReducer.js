@@ -2,8 +2,7 @@
 import { authAPI, usersAPI } from "../api/api";
 import { setUserProfile } from "./profileReducer";
 
-const SET_USER_DATA = "SET-USER-DATA";
-const SHOW_MODAL = "SHOW-MODAL";
+const SET_USER_DATA = "auth/SET-USER-DATA";
 
 
 let initialState = {
@@ -20,11 +19,6 @@ const authReducer = (state = initialState, action) => {
             return {//глубокое копирование
                 ...state,
                 ...action.payload,
-            }
-        case SHOW_MODAL:
-            return {//глубокое копирование
-                ...state,
-                showModal: action.isShow
             }
         default:
             return state;
