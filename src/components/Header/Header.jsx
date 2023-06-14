@@ -10,6 +10,10 @@ const Header = (props) => {
     else setShow(true)
   }
 
+  const hideModal = () => {
+   alert("asfsd")
+  }
+
   const logout = () => {
     setShow(false)
     props.LogoutThunkCreator()
@@ -18,17 +22,17 @@ const Header = (props) => {
   return (
     <header className={classes.header}>
       <img src='https://upload.wikimedia.org/wikipedia/commons/6/6e/JoJo%27s_Bizarre_Adventure_logo.png?20141130224707' />
-      <div className={classes.loginBlock} >
+      <div className={classes.loginBlock} onBlur={hideModal}>
         {
           props.isAuth
           &&
-          <div className={classes.LogPhoto} onClick={showModal}>
+          <div className={classes.LogPhoto} onClick={showModal} >
             <img src={props.avatar} />
           </div>
         }
         {
           isShow &&
-          <div className={classes.modal} onClick={logout}>
+          <div className={classes.modal} onClick={logout} >
             <div className={classes.itemPanel}>
               <div className={classes.item}>
                 <img src={ExitIcon} />

@@ -7,13 +7,17 @@ import { FriendsSlide } from './FriendsSlide/FriendsCarousel';
 import { Message } from './MessageItem/Message';
 import { Formik, Form, Field} from 'formik';
 import { requiredField, ValidateMessage } from '../../utils/validators';
-import { MessageInput } from '../common/preloader/FormControl/FormControl';
+import { MessageInput, PasswordInput } from '../common/preloader/FormControl/FormControl';
 
 
 
 export const Dialogs = (props) => {
-const onSendMessage = (value) => {
-  props.SendMessage(value)
+const onSendMessage = (values, { setSubmitting }) => {
+  props.SendMessage(values.message);
+  values.message = ""
+  setTimeout(() => {
+    setSubmitting(false);
+  }, 400);
 }
 
 
@@ -47,10 +51,13 @@ const onSendMessage = (value) => {
                   initialValues={ { message: '' }}
                   onSubmit={onSendMessage}
                 >
-                  {({errors, touched, isSubmitting}) => (
-                  <Form>
+                  {({errors, touched, values, isSubmitting}) => (
+                  <Form className={classes.FormItems}>
                     <Field name={"message"} placeholder="Введите сообщение" validate={requiredField} component={MessageInput}/>
-                    <button type='submit' disabled={isSubmitting}>отправить</button> 
+                    {
+                      values.message.length > 0 &&
+                      <button type='submit' disabled={isSubmitting}>отправить</button>
+                    }                
                   </Form>
                   )}
                 </Formik>  

@@ -177,17 +177,20 @@
    .MessageInput{
     padding-top: 12px;
     padding-left: 10px;
-    margin-bottom: 12px;
     display: flex;
    }
 
    .MessageInputItem input{
     border: #c9c9cc 0.4px solid; 
     border-radius: 6px;
+    width: 480px;
    }
 
-   .messageList{
-
+   .FormItems{
+    display: flex;
    }
 
-
+   .FormItems button{
+    height: 37px;
+    margin-left: 10px;
+   }
