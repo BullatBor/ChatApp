@@ -3,7 +3,7 @@ import classes from './ProfileInfo.module.css'
 import User from '../../../assets/userIcon.png'
 import { ProfileStatusWithHooks } from './ProfileStatusWithHooks'
 
-export const ProfileInfo = (props) => {
+export const ProfileInfo = ({profile, status, ...props}) => {
   return (
     <div className={classes.Profile}>
       <div className={classes.mainImage}>
@@ -14,10 +14,10 @@ export const ProfileInfo = (props) => {
           <img src={props.avatar}/>
         </div>
         <div className={classes.ProfileInfo}>
-          <h2 className={classes.ProfileInfo_Name}>{props.profile.fullName}</h2>
-          <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+          <h2 className={classes.ProfileInfo_Name}>{profile.fullName}</h2>
+          <ProfileStatusWithHooks status={status} updateStatus={props.updateStatus}/>
           <div className={classes.contacts}>
-            <a href='#'>{props.profile.contacts.github}</a>
+            <a href='#'>{profile.contacts.github}</a>
           </div>
         </div>
         <div className={classes.panelBtns}>

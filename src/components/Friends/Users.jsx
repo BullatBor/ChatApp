@@ -1,30 +1,16 @@
 import React from 'react'
+import { Paginator } from '../common/preloader/Paginator/Paginator';
 import { User } from './User/User';
 import classes from './Users.module.css'
 
-export const Users = (props) => {
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    for(let i = 1; i <= pagesCount; i++){
-        pages.push(i);
-    }
-    let curP = props.currentPage;
-    let curPF = ((curP - 5) < 0) ?  0  : curP - 5 ;
-    let curPL = curP + 5;
-    let slicedPages = pages.slice( curPF, curPL);
+export const Users = ({currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props}) => {
   return (
     <div className={classes.Users}>
-          <div>
-            {
-              slicedPages.map(p => {
-              return <span
-              onClick={(e) => {props.onPageChanged(p)}}
-              className={props.currentPage === p ? classes.selectedPage: classes.pagination}>{p}</span>
-              })
-            }
-          </div>
+          <Paginator currentPage={currentPage} totalUsersCount={totalUsersCount}
+          pageSize={pageSize} onPageChanged={onPageChanged}
+          />
           {
-            props.users.map(item => {
+            users.map(item => {
               return <User 
               key={item.id} state={item}
               followed={props.followed}

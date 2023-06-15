@@ -13,19 +13,13 @@ import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, get
 
 export class UsersAPIComponent extends React.Component {
   componentDidMount() {
-    this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
-    /* Перенеcено как Thunk в Reducer
-    this.props.setLoader(true)
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {//запрос на сервер
-      this.props.setLoader(false)
-      this.props.setUsers(data.items);
-      this.props.setTotalCount(data.totalCount)     
-})
-*/
+    const {currentPage, pageSize} = this.props
+    this.props.getUsersThunkCreator(currentPage, pageSize)
   }
 
 
   onPageChanged = (PageNumber) => {
+    const {pageSize} = this.props;
     this.props.ChangeUsersPageThunkCreator(PageNumber, this.props.pageSize)
   }
   render() {

@@ -1,4 +1,5 @@
 import { followAPI, usersAPI } from "../api/api";
+import { updateObjectInArray } from "../utils/object-helpers";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW"
@@ -19,26 +20,16 @@ let initialState = {
 }
 
 const usersReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case FOLLOW:
             return {//глубокое копирование
                 ...state,
-                users: state.users.map(user => {
-                    if(user.id === action.userId) {
-                       return { ...user, followed: true}
-                    }
-                    return user
-                }),
+                users: updateObjectInArray(state.users, action.userId, "id", { followed: true })
             }
         case UNFOLLOW:
             return {//глубокое копирование
                 ...state,
-                users: state.users.map(user => {
-                    if(user.id === action.userId) {
-                       return { ...user, followed: false}
-                    }
-                    return user
-                }),
+                users: updateObjectInArray(state.users, action.userId, "id", { followed: false })
             }
         case SET_USERS:
             return {//глубокое копирование
@@ -62,9 +53,11 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOWING_IN_PROGRESS:
             return {
                 ...state,
-                followingInProgress: action.isFollowing ? 
-                [...state.followingInProgress, action.userId] :
-                state.followingInProgress.filter(id => id !== action.userId)
+                followingInProgress: action.isFollowing
+                    ?
+                    [...state.followingInProgress, action.userId]
+                    :
+                    state.followingInProgress.filter(id => id !== action.userId)
             }
         default:
             return state;
@@ -74,75 +67,72 @@ const usersReducer = (state = initialState, action) => {
 export const follow = (id) => ({
     type: FOLLOW,
     userId: id
-  })
+})
 
 export const unfollow = (id) => ({
     type: UNFOLLOW,
     userId: id
-  }) 
+})
 export const setUsers = (users) => ({
-type: SET_USERS,
-users
+    type: SET_USERS,
+    users
 })
 export const setCurrentPage = (page) => ({
     type: SET_CURRENT_PAGE,
     currentPage: page
-    }) 
+})
 export const setTotalCount = (count) => ({
     type: SET_TOTAL_COUNT,
     totalCount: count
-    })
+})
 export const setLoader = (load) => ({
     type: SET_LOADER,
     isFetching: load
-    })
+})
 export const setFollowButton = (load, userId) => ({
     type: FOLLOWING_IN_PROGRESS,
     isFollowing: load,
     userId
-    })
+})
 
-    export const getUsersThunkCreator = (currentPage, pageSize) => {//ThunkCreator
-        return (dispatch) => { //Thunk функция которая выполняет асинхр работу и делает диспатчи
-            dispatch(setLoader(true))
-            usersAPI.getUsers(currentPage, pageSize).then(data => {//запрос на сервер
-              dispatch(setLoader(false))
-              dispatch(setUsers(data.items))
-              dispatch(setTotalCount(data.totalCount))     
-        })
+export const getUsersThunkCreator = (currentPage, pageSize) => {//ThunkCreator
+    return async (dispatch) => { //Thunk функция которая выполняет асинхр работу и делает диспатчи
+        dispatch(setLoader(true))
+        const data = await usersAPI.getUsers(currentPage, pageSize); //запрос на сервер
+        dispatch(setLoader(false))
+        dispatch(setUsers(data.items))
+        dispatch(setTotalCount(data.totalCount))
     }
 }
 
-    export const ChangeUsersPageThunkCreator = (PageNumber, pageSize) => {
-        return (dispatch) => {
+export const ChangeUsersPageThunkCreator = (PageNumber, pageSize) => {
+    return async (dispatch) => {
         dispatch(setCurrentPage(PageNumber))
         dispatch(setLoader(true))
-        usersAPI.getUsers(PageNumber, pageSize).then(data => {
+        const data = await usersAPI.getUsers(PageNumber, pageSize);
         dispatch(setLoader(false))
         dispatch(setUsers(data.items))
-    })
     }
 }
 
 export const FollowThunkCreator = (id, isFollow) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setFollowButton(true, id))
-        isFollow 
-        ?
-        usersAPI.follow(id).then(data => {
-          if(data.resultCode === 0){
-            dispatch(follow(id))
-            dispatch(setFollowButton(false, id))
-          }
-        })
-        :
-        usersAPI.unfollow(id).then(data => {
-            if(data.resultCode === 0){
-              dispatch(unfollow(id))
-              dispatch(setFollowButton(false, id))
+        if (isFollow) {
+            const data = await usersAPI.follow(id);
+            if (data.resultCode === 0) {
+                dispatch(follow(id))
+                dispatch(setFollowButton(false, id))
             }
-        })
+        }
+        else {
+            const data = await usersAPI.unfollow(id);
+            if (data.resultCode === 0) {
+                dispatch(unfollow(id))
+                dispatch(setFollowButton(false, id))
+            }
+        }
+    }
 }
-}
-    
+
 export default usersReducer;  

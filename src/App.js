@@ -14,6 +14,10 @@ import { connect } from 'react-redux';
 import { initializeApp } from './redux/appReducer';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Preloader } from './components/common/preloader/Preloader';
+import ProfileStore from './redux/redux-store';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "react-redux"
+
 
 class App extends React.Component {//Делаю чтобы меню пропадало при входе без логина, файл MainPage
   componentDidMount() {
@@ -69,4 +73,16 @@ let mapStateToProps = (state) => ({
 })
 
 
-export default connect(mapStateToProps, { initializeApp })(withRoute(App));
+let AppContainer = connect(mapStateToProps, { initializeApp })(withRoute(App));
+
+
+const NewAppJs = (props => {
+  return <Provider store={ProfileStore}>
+  <BrowserRouter>
+    <AppContainer />
+  </BrowserRouter>
+</Provider>
+})
+
+
+export default NewAppJs;

@@ -12,10 +12,10 @@ export const usersAPI = {
         return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
         .then(responce => responce.data)
     },
-    async follow(id) {
+    follow(id) {
         return axiosInstance.post(`follow/${id}`).then(responce => responce.data)
     },
-    async unfollow(id) {
+    unfollow(id) {
         return axiosInstance.delete(`follow/${id}`).then(responce => responce.data)
     },
     async getProfileInfo(id) {

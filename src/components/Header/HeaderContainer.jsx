@@ -18,7 +18,6 @@ const mapStateToProps = (state) => {
     login: state.AuthPage.login,
     isFetching: state.AuthPage.isFetching,
     avatar: state.ProfilePage.AvatarImg,
-    isShow: state.AuthPage.showModal
   }
 }
 
