@@ -19,3 +19,21 @@
 .ErrorInput{
     border: red 1px solid;
 }
+
+.searchInputs input{
+    border: 0;
+    padding: 0 40px 0 36px;
+    background-color: #edeef0;
+    height: 32px;
+    border-radius: 10px;
+    box-shadow: inset 0px 0.5px 1px rgba(63, 63, 63, 0.05);
+    font-size: 14px;
+}
+
+.searchInputs input:hover{
+    background-color: #e4e5e6;
+}
+
+.searchInputs{
+    padding: 8px 0;
+}

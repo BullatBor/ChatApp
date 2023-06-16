@@ -1,28 +1,40 @@
 import React from 'react'
-import  classes from "./Menu.module.css"
-import {Link, NavLink, Router} from 'react-router-dom'
+import classes from "./Menu.module.css"
+import { Link, NavLink, Router } from 'react-router-dom'
 
 export const Menu = () => {
   return (
     <div className={classes.nav}>
+      <NavLink to={"/profile"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
         <div className={classes.item}>
-          <NavLink to={"/profile"} className={({ isActive }) => (isActive && classes.activeLink)}>Профиль</NavLink>
+          Профиль
         </div>
+      </NavLink>
+      <NavLink to={"/dialogs"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
         <div className={`${classes.item} ${classes.active}`}>
-          <NavLink to={"/dialogs"} className={({ isActive }) => (isActive && classes.activeLink)}>Сообщения</NavLink>
+          Сообщения
         </div>
+      </NavLink>
+      <NavLink to={"/friends"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
         <div className={`${classes.item} ${classes.active}`}>
-          <NavLink to={"/friends"} className={({ isActive }) => (isActive && classes.activeLink)}>Друзья</NavLink>
+          Друзья
         </div>
+      </NavLink>
+      <NavLink to={"/news"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
         <div className={classes.item}>
-          <NavLink to={"/news"} className={({ isActive }) => (isActive && classes.activeLink)}>Новости</NavLink>
+          Новости
         </div>
+      </NavLink>
+      <NavLink to={"/music"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
         <div className={classes.item}>
-          <NavLink to={"/music"} className={({ isActive }) => (isActive && classes.activeLink)}>Музыка</NavLink>
+          Музыка
         </div>
+      </NavLink>
+      <NavLink to={"/settings"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
         <div className={classes.item}>
-          <NavLink to={"/settings"} className={({ isActive }) => (isActive && classes.activeLink)}>Настройки</NavLink>
+          Настройки
         </div>
-      </div>
+      </NavLink>
+    </div>
   )
 }

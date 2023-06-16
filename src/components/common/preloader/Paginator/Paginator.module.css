@@ -1,69 +1,39 @@
-
-.Users{
-    width: 550px;
-    background-color: white;
-    border-radius: 15px;
-    border: #b0b0b1 1px solid;
-    padding: 0 20px;
+.item{
+    width: 20px;
+    text-align: center;
+    margin-right: 5px;
+    border-radius: 5px;
+    background-color: aliceblue;
+    box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
+    color: rgb(139, 126, 126);
+    font-size: 14px;
+    cursor: pointer;
 }
 
+.itemDisabled{
+    width: 20px;
+    text-align: center;
+    margin-right: 5px;
+    border-radius: 5px;
+    background-color: rgba(134, 133, 133, 0.3);
+    box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
+    color: rgb(139, 126, 126);
+    font-size: 14px;
+}
 
-
-.User{
-    background-color: white;
-    border-bottom: #b0b0b1 1px solid;
-    padding: 12px 0 12px;
+.paginator {
+    margin-top: 10px;
     display: flex;
-}
-
-.userPhoto img{
-    margin-right: 15px;
-    width: 80px;
-    height: 80px;
-    border-radius: 55px;
-}
-
-.userName {
-    
-    font-weight: 700;
-    margin-bottom: 9px;
-}
-
-.userName a {
-    color: #2a5885;
-    text-decoration: none;
-}
-
-.userInfo {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    padding: 5px 10px 0 0;
 }
 
 .selectedPage{
     font-weight: bold;
-    margin-right: 3px;
 }
 
 .pagination{
-    margin-right: 3px;
 }
 
-
-.addFriend img {  
-    width: 24px;
-    height: 24px;
-}
-
-.addFriend{
-    border-radius: 30px;
-    width: 24px;
-    height: 24px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.addFriend:hover {
-    background-color: #eef6ff;
+.item:hover {
+    background-color: rgb(240, 240, 240);
+    transition: ease 0.5ms;
 }

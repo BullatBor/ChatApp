@@ -9,9 +9,10 @@
     height: 30px;
     border-radius: 5px;
     cursor: pointer;
+    padding-left: 6px;
   }
   .item:hover{
-    background-color: #b8babd;
+    background-color: #e3e5e7;
   }
 
   .item a {
@@ -23,4 +24,15 @@
 
   .item a.activeLink {
     color: rgb(114, 113, 109);
+    
+  }
+
+  .activeLink{
+    text-decoration: none;
+    color: #2a5885;
+  }
+
+  .notActiveLink{
+    text-decoration: none;
+    color: #2a5885;
   }

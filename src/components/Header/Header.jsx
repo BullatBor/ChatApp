@@ -1,5 +1,8 @@
+import { Field, Form, Formik } from 'formik';
 import React, { useState } from 'react';
+import { MessageInput, SearchInput } from '../common/preloader/FormControl/FormControl';
 import ExitIcon from "./../../assets/exit.png"
+import vkIcon from "./../../assets/vkIcon.png"
 import classes from './Header.module.css';
 
 
@@ -11,7 +14,7 @@ const Header = (props) => {
   }
 
   const hideModal = () => {
-   alert("asfsd")
+    alert("asfsd")
   }
 
   const logout = () => {
@@ -21,7 +24,13 @@ const Header = (props) => {
 
   return (
     <header className={classes.header}>
-      <img src='https://upload.wikimedia.org/wikipedia/commons/6/6e/JoJo%27s_Bizarre_Adventure_logo.png?20141130224707' />
+      <div className={classes.search}>
+        <div className={classes.vkIcon}>
+          <img src={vkIcon} />
+          <span>ВКОНТАНТЕ</span>
+        </div>      
+        <SearchForm />
+      </div>
       <div className={classes.loginBlock} onBlur={hideModal}>
         {
           props.isAuth
@@ -45,5 +54,19 @@ const Header = (props) => {
     </header>
   )
 }
+
+const SearchForm = () => {
+  return (
+    <Formik
+      initialValues={{ searchText: "" }}>
+      {({ errors, touched, isSubmitting }) => (
+        <Form>
+          <Field className={classes.NewPostInput} component={SearchInput} name={"searchText"} placeholder="Поиск" />
+        </Form>
+      )}
+    </Formik>
+  )
+}
+
 
 export default Header;

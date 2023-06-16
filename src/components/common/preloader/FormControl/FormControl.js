@@ -53,6 +53,17 @@ export const PasswordInput = ({ field, form, ...props }) => {
 }
 
 
+export const SearchInput = ({ field, form, ...props }) => {
+    return (
+        <div className={classes.searchInputs}>
+                <input className={classes.messageInput}
+                    {...field} {...props}
+                />
+        </div>
+    )
+}
+
+
 export const MessageInput = ({ field, form, ...props }) => {
     return (
         <div className={classes.Inputs}>
@@ -64,7 +75,6 @@ export const MessageInput = ({ field, form, ...props }) => {
         </div>
     )
 }
-
 
 export const CreateField = (placeholder, name, validators, component, props = {}, text = "") => (
     <div>

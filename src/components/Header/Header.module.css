@@ -1,88 +1,118 @@
 .header {
   grid-area: head;
-  background-color:white;
+  background-color: white;
   border-bottom: #b8b8ce7a 1px solid;
-  }
-  
-  .header img{
-    width: 100px;
-  }
-  
-  .loginBlock{
-    float: right;
-    position: relative;
-    cursor: pointer;
-    padding-left: 10px;
-  }
+  display: flex;
+  position: relative;
+}
 
-  
-  .loginBlock a{
-    color: rgb(64, 133, 110);
-  }
-  .LogPhoto{
-    width: 48px;
-    height: 50px;
-    padding-top: 10px;
-    padding-left: 10px;
-  }
+.search {
+  display: flex;
+}
 
-  .LogPhoto:hover {
-    background-color: #eeeff1;
-  }
+.vkIcon{
+  padding: 8px 0;
+  height: 32px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.vkIcon img{
+  padding: 4px 0;
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
+}
+
+.vkIcon span {
+  font-weight: 600;
+  line-height: 32px;
+}
 
 
-  .LogPhoto img{
-    width: 32px;
-    height: 32px;
-    border-radius: 50px;
-    pointer-events: none;
-    -moz-user-select: none; 
-    -webkit-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none;
-  }
 
-  .modal {
-    position:absolute;
-    right: 0;
-    z-index: 9999;
-    padding: 12px 0 8px;
-    background-color: white;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
-    width: 302px;
-    
-  }
 
-  .item img{
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-  }
+.loginBlock {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  padding-left: 10px;
+}
 
-  .item {
-    padding: 0 16px;
-    position: absolute;
-    top: 50%;
-    margin-top: -0.625em;
-    pointer-events: none;
-    -moz-user-select: none; 
-    -webkit-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none;
-  }
-  
-  .item span{
-    font-size: 13px;
-    font-weight: 400;
-  }
 
-  .itemPanel { 
-    height: 36px;
-  }
+.loginBlock a {
+  color: rgb(64, 133, 110);
+}
 
-  .itemPanel:hover {
-    cursor: pointer;
-    background-color: #f0f2f5;
-  }
+.LogPhoto {
+  width: 48px;
+  height: 48px;
+  padding-left: 10px;  
+}
+
+.LogPhoto:hover {
+  background-color: #eeeff1;
+}
+
+
+.LogPhoto img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.modal {
+  position: absolute;
+  right: 0;
+  z-index: 9999;
+  padding: 12px 0 8px;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
+  width: 302px;
+
+}
+
+.item img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.item {
+  padding: 0 16px;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.625em;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.item span {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.itemPanel {
+  height: 36px;
+}
+
+.itemPanel:hover {
+  cursor: pointer;
+  background-color: #f0f2f5;
+}

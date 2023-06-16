@@ -51,8 +51,10 @@ function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-export let ProfileContainer = compose(
+let ProfileContainer = compose(
     connect(mapStateToProps, {getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator}),    
     withAuthNavigate,
     withRouter
 )(ContentContainer)
+
+export default ProfileContainer
