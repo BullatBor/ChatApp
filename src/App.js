@@ -14,7 +14,7 @@ import { initializeApp } from './redux/appReducer';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Preloader } from './components/common/preloader/Preloader';
 import ProfileStore from './redux/redux-store';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { Provider } from "react-redux"
 
 //import { ProfileContainer } from './components/Content/ContentContainer';
@@ -82,9 +82,9 @@ let AppContainer = connect(mapStateToProps, { initializeApp })(withRoute(App));
 
 const NewAppJs = (props => {
   return <Provider store={ProfileStore}>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <AppContainer />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 })
 
