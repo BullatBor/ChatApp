@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/ChatApp/static/css/main.467651f8.css",
+    "main.js": "/ChatApp/static/js/main.9c7c2c1b.js",
+    "static/css/331.968d1c1e.chunk.css": "/ChatApp/static/css/331.968d1c1e.chunk.css",
+    "static/js/331.e36cb122.chunk.js": "/ChatApp/static/js/331.e36cb122.chunk.js",
+    "static/media/preloader.gif": "/ChatApp/static/media/preloader.0c2993480d0ca8008754.gif",
+    "static/media/vkIcon.png": "/ChatApp/static/media/vkIcon.2764998f01e0ea6eb7b6.png",
+    "static/media/right.png": "/ChatApp/static/media/right.a047fe68b104ae4adae5.png",
+    "static/media/left.png": "/ChatApp/static/media/left.ba0f64e53019f395cf58.png",
+    "static/media/addFriend.png": "/ChatApp/static/media/addFriend.3a4a556c031b2f8c7b73.png",
+    "static/media/JSIcon.png": "/ChatApp/static/media/JSIcon.f3b04c4facf9bba11e35.png",
+    "index.html": "/ChatApp/index.html",
+    "main.467651f8.css.map": "/ChatApp/static/css/main.467651f8.css.map",
+    "main.9c7c2c1b.js.map": "/ChatApp/static/js/main.9c7c2c1b.js.map",
+    "331.968d1c1e.chunk.css.map": "/ChatApp/static/css/331.968d1c1e.chunk.css.map",
+    "331.e36cb122.chunk.js.map": "/ChatApp/static/js/331.e36cb122.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.467651f8.css",
+    "static/js/main.9c7c2c1b.js"
+  ]
+}
