@@ -7,10 +7,10 @@ import { RightColumn } from './RightColumn/RightColumn'
 export const Content = (props) => {
   return (
     <div className={classes.Profile}>
-      <ProfileInfo avatar={props.avatar} profile={props.profile} status={props.status} updateStatus={props.updateProfileStatusThunkCreator}/>
+      <ProfileInfo savePhoto={props.savePhoto} isOwner={props.isOwner} avatar={props.avatar} profile={props.profile} status={props.status} updateStatus={props.updateProfileStatusThunkCreator}/>
       <div className={classes.ProfilePosts}>
         <div>
-          <LeftColumn/>
+          <LeftColumn isOwner={props.isOwner}/>
         </div>
         <div>
           <RightColumn/>

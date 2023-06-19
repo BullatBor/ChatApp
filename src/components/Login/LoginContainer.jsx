@@ -2,7 +2,7 @@ import React from 'react'
 import classes from "./Login.module.css"
 import Logo from "../../assets/JSIcon.png"
 import { Formik, Form } from 'formik';
-import { LoginThunkCreator, AuthThunkCreator } from '../../redux/authReducer';
+import { LoginThunkCreator } from '../../redux/authReducer';
 import { requiredField, ValidateEmail, ValidatePassword } from '../../utils/validators';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -84,8 +84,7 @@ const mapStateToProps = (state) => {
 
 export let Login = compose(
   connect(mapStateToProps, {
-    LoginThunkCreator,
-    AuthThunkCreator
+    LoginThunkCreator
   })
 )(LoginContainer)
 

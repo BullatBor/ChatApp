@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { Field, Form, Formik } from 'formik'
-import React, {PureComponent, useState} from 'react'
+import React, { PureComponent, useState } from 'react'
 import { Textarea } from '../../common/preloader/FormControl/FormControl'
 import classes from './MyPosts.module.css'
 import { Post } from './Post/Post'
@@ -23,13 +23,13 @@ export const MyPosts = (props) => {
     }
     return error
   }
-  
+
   let mass = props.posts;
 
   const [isFocus, setFocus] = useState(false)
 
   const FocusInput = () => {
-    if(isFocus) setFocus(false)
+    if (isFocus) setFocus(false)
     else setFocus(true)
   }
 
@@ -37,11 +37,13 @@ export const MyPosts = (props) => {
     alert("sfsdf")
   }
 
-    return (
-      <div className={classes.content}>
-        <div className={classes.postsBlock}>
+  return (
+    <div className={classes.content}>
+      <div className={classes.postsBlock}>
+        {
+          props.isOwner &&
           <div className={classes.NewPost} onBlur={FocusInput2}>
-            <img src={props.avatar} />
+            <img src={props.profileImage || props.defaultImage} />
             <Formik
               initialValues={{ textField: '' }}
               onSubmit={onAddPost}
@@ -57,17 +59,18 @@ export const MyPosts = (props) => {
             )}
             </Formik>
           </div>
-          <div className={classes.posts}>
-            {
-              mass.map(item => {
-                return <Post key={item.id} message={item.message} likesCount={item.likesCount} />
-              })
+        }
+        <div className={classes.posts}>
+          {
+            mass.map(item => {
+              return <Post key={item.id} message={item.message} likesCount={item.likesCount} />
+            })
 
-            }
-          </div>
+          }
         </div>
       </div>
+    </div>
 
-    )
-  }
+  )
+}
 

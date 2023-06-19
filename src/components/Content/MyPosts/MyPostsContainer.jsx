@@ -20,11 +20,15 @@ export const MyPostsContainer = (props) => {
 
 }*/
 
+
+
+
 const mapStateToProps = (state) => {//Тут для отрисовки возвращаемый обьект сравнивается со старым объектом, после connect, и это пропсы которые отправляются в MyPost
   return {
     posts: state.ProfilePage.posts,
     newPostText: state.ProfilePage.PostText,
-    avatar: state.ProfilePage.AvatarImg
+    profileImage: state.ProfilePage.profile.photos.large,
+    defaultImage: state.ProfilePage.AvatarImg
   }
 }
 

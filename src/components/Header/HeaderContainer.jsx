@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import { LogoutThunkCreator } from '../../redux/authReducer';
+import { getProfileThunkCreator } from '../../redux/profileReducer';
 
 
 
@@ -17,10 +18,11 @@ const mapStateToProps = (state) => {
     isAuth: state.AuthPage.isAuth,
     login: state.AuthPage.login,
     isFetching: state.AuthPage.isFetching,
-    avatar: state.ProfilePage.AvatarImg,
+    defaultPhoto: state.ProfilePage.AvatarImg,
+    profile: state.ProfilePage.profile
   }
 }
 
 
 
-export let HeaderContainer = connect(mapStateToProps, {LogoutThunkCreator})(HeaderClass);
+export let HeaderContainer = connect(mapStateToProps, { LogoutThunkCreator })(HeaderClass);

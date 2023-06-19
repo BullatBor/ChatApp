@@ -40,6 +40,18 @@ export const profileAPI = {
         .then(responce => {
             return responce.data
         })
+    },
+    async savePhoto(photoFile) {
+        const formData = new FormData();
+        formData.append("image", photoFile);
+        return axiosInstance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(responce => {
+            return responce.data
+        })
     }
 }
 

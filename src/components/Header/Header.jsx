@@ -36,7 +36,7 @@ const Header = (props) => {
           props.isAuth
           &&
           <div className={classes.LogPhoto} onClick={showModal} >
-            <img src={props.avatar} />
+            <img src={ props.defaultPhoto} />
           </div>
         }
         {

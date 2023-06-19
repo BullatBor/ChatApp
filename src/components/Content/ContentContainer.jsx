@@ -1,30 +1,44 @@
 import React from 'react'
 import { Content } from './Content'
 import { connect } from 'react-redux';
-import { getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator } from '../../redux/profileReducer';
+import { getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator, saveProfilePhotoThunkCreator} from '../../redux/profileReducer';
 import { Preloader } from '../common/preloader/Preloader';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { withAuthNavigate } from '../../hoc/withAuthNavigate';
 import { compose } from 'redux';
 
 class ContentContainer extends React.Component {
-    componentDidMount(){    
-      this.props.getProfileThunkCreator(this.props.router.params.userId || this.props.userId)
-      this.props.getProfileStatusThunkCreator(this.props.router.params.userId || this.props.userId)
+
+    refreshProfile(){
+        this.props.getProfileThunkCreator(this.props.router.params.userId || this.props.userId)
+        this.props.getProfileStatusThunkCreator(this.props.router.params.userId || this.props.userId)
     }
-    render(){      
+
+    componentDidMount() {
+        this.refreshProfile()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(this.props.router.params.userId != prevProps.router.params.userId){
+            this.refreshProfile()
+        }  
+    }
+    render() {
         return <>
             {
                 this.props.isFetching
-                ?
-                <Preloader/>
-                :
-                <Content {...this.props} />
+                    ?
+                    <Preloader />
+                    :
+                    <Content 
+                    isOwner={!this.props.router.params.userId}
+                    savePhoto={this.props.saveProfilePhotoThunkCreator}
+                    {...this.props} />
             }
-            </>
-            
+        </>
+
     }
- 
+
 }
 
 const mapStateToProps = (state) => ({
@@ -52,7 +66,7 @@ function withRouter(Component) {
 }
 
 let ProfileContainer = compose(
-    connect(mapStateToProps, {getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator}),    
+    connect(mapStateToProps, { getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator, saveProfilePhotoThunkCreator }),
     withAuthNavigate,
     withRouter
 )(ContentContainer)

@@ -14,8 +14,8 @@ class NewsContainerClass extends React.Component {
 
 let mapStateToProps = (state) => ({
   news: state.NewsPage.news,
-  profileImage: state.ProfilePage.AvatarImg,
-  NewPostText: state.NewsPage.PostText
+  defaultPhoto: state.ProfilePage.AvatarImg,
+  //profilePhoto: state.ProfilePage.profile.photos.large
 })
 
 export let NewsContainer = compose(connect(mapStateToProps, {AddNews, TextChange, AddLike, setVisibleComment}),

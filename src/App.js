@@ -17,13 +17,17 @@ import ProfileStore from './redux/redux-store';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { Provider } from "react-redux"
 
-//import { ProfileContainer } from './components/Content/ContentContainer';
-const ProfileContainer = React.lazy(() => import("./components/Content/ContentContainer"))//Lazy loading
+import  ProfileContainer  from './components/Content/ContentContainer';
+//const ProfileContainer = React.lazy(() => import("./components/Content/ContentContainer"))//Lazy loading
 
 
 class App extends React.Component {//Делаю чтобы меню пропадало при входе без логина, файл MainPage
   componentDidMount() {
-    this.props.initializeApp(this.props.router.params.userId)
+    this.props.initializeApp(this.props.userId)
+  }
+
+  componentDidUpdate(){
+    this.props.initializeApp(this.props.userId)
   }
 
   render() {
@@ -73,7 +77,8 @@ function withRoute(Component) {
 }
 
 let mapStateToProps = (state) => ({
-  initialized: state.AppPage.initialized
+  initialized: state.AppPage.initialized,
+  userId: state.AuthPage.userId,
 })
 
 
