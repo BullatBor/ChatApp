@@ -2,12 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import { LogoutThunkCreator } from '../../redux/authReducer';
-import { getProfileThunkCreator } from '../../redux/profileReducer';
+import { getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator } from '../../redux/profileReducer';
 
 
 
 
 class HeaderClass extends React.Component {
+componentDidMount() {
+  
+}
   render(){
     return <Header {...this.props}/>
   }
@@ -19,10 +22,10 @@ const mapStateToProps = (state) => {
     login: state.AuthPage.login,
     isFetching: state.AuthPage.isFetching,
     defaultPhoto: state.ProfilePage.AvatarImg,
-    profile: state.ProfilePage.profile
+    userId: state.AuthPage.userId,
   }
 }
 
 
 
-export let HeaderContainer = connect(mapStateToProps, { LogoutThunkCreator })(HeaderClass);
+export let HeaderContainer = connect(mapStateToProps, { LogoutThunkCreator, getProfileThunkCreator})(HeaderClass);

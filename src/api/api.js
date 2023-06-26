@@ -52,6 +52,11 @@ export const profileAPI = {
         .then(responce => {
             return responce.data
         })
+    },
+    async saveProfile(profile){
+        return axiosInstance.put("profile", profile).then(responce => {
+            return responce.data
+        })
     }
 }
 
@@ -61,7 +66,7 @@ export const authAPI = {
         .then(responce => responce.data)
     },
 
-    async login(email, password, rememberMe = false, captcha) {
+    async login(email, password, rememberMe = false, captcha = null) {
         return axiosInstance.post(`auth/login`, {email: email, password: password, rememberMe: rememberMe, captcha: captcha})
         .then(responce => {           
             return responce.data
@@ -70,6 +75,14 @@ export const authAPI = {
 
     async logout() {
         return axiosInstance.delete(`auth/login`).then(responce => {           
+            return responce.data
+        })
+    }
+}
+
+export const securityAPI = {
+    getCaptchaUrl() {
+        return axiosInstance.delete(`security/get-captcha-url`).then(responce => {           
             return responce.data
         })
     }

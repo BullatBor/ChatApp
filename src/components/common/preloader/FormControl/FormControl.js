@@ -21,6 +21,14 @@ export const Textarea = ({ field, form, ...props }) => {
     )
 }
 
+export const StatusEditField = ({ field, form, ...props }) => {
+    return (
+        <div className={classes.statusEdit}>
+            <textarea {...field} {...props} />
+        </div>
+    )
+}
+
 
 export const LoginInput = ({ field, form, ...props }) => {
     return (
@@ -56,9 +64,9 @@ export const PasswordInput = ({ field, form, ...props }) => {
 export const SearchInput = ({ field, form, ...props }) => {
     return (
         <div className={classes.searchInputs}>
-                <input className={classes.messageInput}
-                    {...field} {...props}
-                />
+            <input className={classes.messageInput}
+                {...field} {...props}
+            />
         </div>
     )
 }
@@ -76,8 +84,21 @@ export const MessageInput = ({ field, form, ...props }) => {
     )
 }
 
-export const CreateField = (placeholder, name, validators, component, props = {}, text = "") => (
-    <div>
+
+export const EditDefaultInput = ({ field, form, ...props }) => {
+    return (
+        <div className={classes.EditDefaultInput}>
+            <input className={classes.messageInput}
+                {...field} {...props}
+            />
+        </div>
+    )
+}
+
+
+export const CreateField = (placeholder, name, validators, component, props = {}, text = "") => {
+    return <div>
         <Field placeholder={placeholder} name={name} validate={validators} component={component} {...props}/> {text}
     </div>
-)
+}
+

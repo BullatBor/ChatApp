@@ -1,0 +1,243 @@
+.main {
+  display: grid;
+  grid-template-columns: 550px 450px;
+  grid-template-areas:
+    "leftColumn rightColumn"
+}
+
+.leftColumn {
+  grid-area: leftColumn;
+}
+
+.rightColumn {
+  grid-area: rightColumn;
+}
+
+.pageProfileEdit {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: inset 0px 0.5px 1.5px rgba(63, 63, 63, 0.1);
+}
+
+.pageContactsEdit {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: inset 0px 0.5px 1.5px rgba(63, 63, 63, 0.1);
+  margin-bottom: 20px;
+}
+
+
+.header {
+  height: 62px;
+  line-height: 62px;
+  font-size: 15px;
+  padding: 0 20px;
+}
+
+.headerContacts {
+  border-bottom: rgba(63, 63, 63, 0.2) 0.5px solid;
+}
+
+.imageCover {
+  background-image: url("https://images.justwatch.com/backdrop/257130664/s640");
+  padding-top: 15px;
+  height: 167px;
+}
+
+.editAvatar {
+  background-color: white;
+  border-radius: 100px;
+  margin-top: -50px;
+  width: 100px;
+  height: 100px;
+
+  z-index: 1;
+}
+
+.editAvatarPanel {
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.editAvatar img {
+  width: 92px;
+  height: 92px;
+  margin: 4px;
+  border-radius: 100px;
+}
+
+.editName {
+  padding: 12px 20px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  justify-content: space-between;
+  display: flex;
+  width: 375px;
+}
+
+.editName a {
+  text-decoration: none;
+  color: #3464ab;
+  font-size: 13px;
+}
+
+.editNickname {
+  padding: 10px 20px;
+  font-size: 13px;
+  display: flex;
+  height: 36px;
+}
+
+.editNicknameLabel {
+  width: 140px;
+}
+
+.editNicknameTool {
+  display: flex;
+  justify-content: space-between;
+  width: 364px;
+}
+
+.editNickNameHref a {
+  text-decoration: none;
+  color: #3464ab;
+}
+
+.pageProfileEdit a:hover {
+  text-decoration: underline;
+}
+
+.addInfo {
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-shadow: inset 0px 0.5px 1.5px rgba(63, 63, 63, 0.1);
+  margin-bottom: 30px;
+  padding-top: 10px;
+}
+
+.briefInfo {
+  display: flex;
+  padding: 20px 0 15px;
+}
+
+.briefInfoLabel {
+  padding: 6px 10px 0 0;
+  width: 170px;
+  text-align: right;
+  font-size: 13px;
+  color: #838a99;
+}
+
+.briefInfo textarea {
+  padding: 5px 7px 9px;
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  resize: none;
+  overflow: hidden;
+  border: rgba(63, 63, 63, 0.3) 0.5px solid;
+}
+
+.briefInfo textarea:focus {
+  border: rgba(63, 63, 63, 0.3) 0.5px solid;
+}
+
+.editMenu {
+  margin-left: 30px;
+  height: 200px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 8px 8px 6px;
+}
+
+.personalInfoMenu {
+  padding: 8px 10px;
+
+}
+
+.editPageList {
+  display: flex;
+  flex-direction: column;
+}
+
+.editLine {
+  border-bottom: rgba(63, 63, 63, 0.2) 0.5px solid;
+  margin-bottom: 10px;
+}
+
+.editProfileLine {
+  border-bottom: rgba(63, 63, 63, 0.2) 0.5px solid;
+  margin: 5px 19px 20px;
+}
+
+.editPageList a {
+  padding: 4px 12px;
+  margin-bottom: 2px;
+  text-decoration: none;
+  font-size: 13px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  color: black;
+  font-weight: 400;
+}
+
+.editPageList a:hover {
+  background-color: #f5f6f8;
+}
+
+.formSubmitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.formSubmitBtn button {
+  background-color: #447bba;
+  padding: 0 16px;
+  height: 32px;
+  border: 0;
+  color: white;
+  border-radius: 10px;
+}
+
+.formSubmitBtn button:hover {
+  background-color: #4e84c2;
+}
+
+.submitUnsuccess {
+  margin: 15px 15px 20px;
+  background-color: #d821218a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: inset 0px 0.5px 1.5px rgba(63, 63, 63, 0.1);
+}
+
+.submitSuccess{
+  margin: 15px 15px 20px;
+  background-color: #def0d3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: inset 0px 0.5px 1.5px rgba(63, 63, 63, 0.1);
+}
+
+.submitUnsuccess, .submitSuccess span{
+  font-weight: bold;
+  font-size: 13px;
+  padding: 20px 0 10px;
+}
+.submitUnsuccess, .submitSuccess p{
+  font-size: 12px;
+margin: 0;
+padding-bottom: 20px;
+}

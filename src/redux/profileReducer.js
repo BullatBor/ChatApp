@@ -56,6 +56,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: { ...state.profile, photos: action.photos }
             }
+        case SET_DEFAULT_PHOTO:
+            return {
+                ...state,
+                AvatarImg: action.photo
+            }
         default:
             return state;
     }
@@ -89,7 +94,12 @@ export const setProfilePhotoSuccess = (photos) => ({
     photos: photos
 })
 
-export const getProfileThunkCreator = (userId = 3) => {
+export const setDefaultPhoto = (photo) => ({
+    type: SET_DEFAULT_PHOTO,
+    photo: photo
+})
+
+export const getProfileThunkCreator = (userId = 2) => {
     return async (dispatch) => {
         const data = await usersAPI.getProfileInfo(userId);
         dispatch(setUserProfile(data));
@@ -105,12 +115,17 @@ export const getProfileStatusThunkCreator = (id = 2) => {
 }
 
 export const updateProfileStatusThunkCreator = (status) => {
-    return async (dispatch) => {
-        const data = await profileAPI.updateStatus(status);
-        if (data.resultCode === 0) {
-            dispatch(setStatus(status))
+    try{
+        return async (dispatch) => {
+            const data = await profileAPI.updateStatus(status);
+            if (data.resultCode === 0) {
+                dispatch(setStatus(status))           
+            }
         }
+    } catch(error){
+        console.log(error);//оставить это перехватчик ошибок или из App
     }
+    
 }
 
 export const saveProfilePhotoThunkCreator = (file) => {
@@ -118,8 +133,22 @@ export const saveProfilePhotoThunkCreator = (file) => {
         const data = await profileAPI.savePhoto(file);
         if (data.resultCode === 0) {
             dispatch(setProfilePhotoSuccess(data.data.photos))
+            dispatch(setDefaultPhoto(data.data.photos.large))
         }
     }
 }
+
+export const saveProfileThunkCreator = (profile, setStatus) => {
+    return async (dispatch, getState) => {
+        const userId = getState().AuthPage.userId;
+        const data = await profileAPI.saveProfile(profile);  
+        if (data.resultCode === 0) {
+            dispatch(getProfileThunkCreator(userId))
+            setStatus({ success: "Изменения сохранены" })
+        } 
+        else setStatus({ error: data.messages[0] }) 
+    }
+}
+
 
 export default profileReducer;

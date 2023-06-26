@@ -10,23 +10,30 @@ import { Navigate } from 'react-router-dom';
 import { CreateField, LoginInput, PasswordInput } from '../common/preloader/FormControl/FormControl';
 
 
-const LoginForm = ({ LoginThunk }) => {
+const LoginForm = ({ LoginThunk, captchaUrl }) => {
   const submit = (values, { setSubmitting, setStatus }) => {
-    LoginThunk(values.login, values.password, values.rememberMe, true, setStatus)
+    LoginThunk(values.login, values.password, values.rememberMe, values.captcha, setStatus)
     setTimeout(() => {
       <Navigate to={"/profile"} />
       setSubmitting(false);
     }, 400);
   }
 
-
   return (
     <Formik
-      initialValues={{ login: '', password: '', rememberMe: false }}
+      initialValues={{ login: '', password: '', captcha: "", rememberMe: false }}
       onSubmit={submit}
     >
       {({ errors, touched, isSubmitting, status }) => (
         <Form>
+          {
+            captchaUrl &&
+            <div>
+              <img src={captchaUrl} />
+              {CreateField('Введите символы', "captcha", requiredField, LoginInput)}
+            </div>
+
+          }
           {
             CreateField('Телефон или почта', "login", requiredField, LoginInput)
           }
@@ -34,7 +41,7 @@ const LoginForm = ({ LoginThunk }) => {
             CreateField('Пароль', "password", requiredField, PasswordInput, { type: "password" })
           }
           {
-            CreateField(null, "rememberMe", requiredField, null, { type: "checkbox" }, "remember me")
+            CreateField(null, "rememberMe", null, null, { type: "checkbox" }, "remember me")
           }
           <div className={classes.btn}>
             <button className={classes.signBtn}
@@ -42,7 +49,8 @@ const LoginForm = ({ LoginThunk }) => {
               Войти
             </button>
             {
-              status && <span>{status.error}</span>
+              status &&
+              <span>{status.error}</span>
             }
           </div>
         </Form>
@@ -66,7 +74,7 @@ export class LoginContainer extends React.Component {
             </div>
             <span>Вход в JS net</span>
           </div>
-          <LoginForm LoginThunk={this.props.LoginThunkCreator} />
+          <LoginForm LoginThunk={this.props.LoginThunkCreator} captchaUrl={this.props.captchaUrl} />
         </div>
       </div>
     )
@@ -78,7 +86,8 @@ const mapStateToProps = (state) => {
     isAuth: state.AuthPage.isAuth,
     login: state.AuthPage.login,
     isFetching: state.AuthPage.isFetching,
-    avatar: state.ProfilePage.AvatarImg
+    avatar: state.ProfilePage.AvatarImg,
+    captchaUrl: state.AuthPage.captchaUrl
   }
 }
 

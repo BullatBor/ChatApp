@@ -18,7 +18,7 @@ export const News = (props) => {
     <div className={classes.newsWrapper}>
       <div className={classes.newsPanel}>
         <div className={classes.newPostBlock}>
-          <img className={classes.profileImg} src={props.profilePhoto || props.defaultPhoto} />
+          <img className={classes.profileImg} src={props.defaultPhoto} />
           <div className={classes.newPostAdd}>
             <input placeholder='Что у вас нового?' onChange={ChangeTextForPost} value={props.NewPostText}></input>
           </div>

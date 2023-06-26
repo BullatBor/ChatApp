@@ -27,7 +27,7 @@ export const initializedSuccess = () => ({
 
 export const initializeApp = (id) => {
     return (dispatch) => {
-        let promise = dispatch(AuthThunkCreator(id));
+        let promise = dispatch(AuthThunkCreator());
         promise.then(() => {
             dispatch(initializedSuccess())
         })

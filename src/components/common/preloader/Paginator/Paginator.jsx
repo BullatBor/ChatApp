@@ -22,7 +22,7 @@ export const Paginator = ({ currentPage, totalUsersCount, pageSize, onPageChange
       <div className={classes.item}>{"<"}</div>
       {
         slicedPages.map(p => {
-          return <div className={currentPage === p ? classes.itemDisabled : classes.item } onClick={(e) => { onPageChanged(p) }}>
+          return <div key={p} className={currentPage === p ? classes.itemDisabled : classes.item } onClick={(e) => { onPageChanged(p) }}>
             <span            
               className={currentPage === p ? classes.selectedPage : classes.pagination}>{p}
             </span>

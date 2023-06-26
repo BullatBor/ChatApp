@@ -1,7 +1,21 @@
-.Profile{
+.Profile {
     display: block;
 }
-.descriptionBlock{
+
+.editPhoto{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px rgba(63, 63, 63, 0.4);
+    padding: 8px;
+    width: 170px;
+}
+
+.editPhoto h3{
+    margin: 0;
+}
+
+
+.descriptionBlock {
     padding: 10px;
     border: #b0b0b1 1px solid;
     background-color: white;
@@ -12,24 +26,25 @@
     display: flex;
 }
 
-.avatarBack{
+.avatarBack {
     background-color: white;
     border-radius: 100px;
     margin-top: -85px;
     width: 160px;
     height: 160px;
-    border: #b0b0b1 1px solid;
+    cursor: pointer;
     z-index: 1;
 }
-.avatarBack img{
-  width: 150px;
-  height: 150px;
-  margin: 4px;
-  border: #b0b0b1 1px solid;
-  border-radius: 100px;
+
+.avatarBack img {
+    width: 150px;
+    height: 150px;
+    margin: 4px;
+    border: #b0b0b1 1px solid;
+    border-radius: 100px;
 }
 
-.mainImage{
+.mainImage {
     background-image: url("https://images.justwatch.com/backdrop/257130664/s640");
     background-size: cover;
     height: 300px;
@@ -39,68 +54,261 @@
     z-index: 0;
 }
 
-.ProfileInfo{
+.ProfileInfo {
     margin: 0 10px;
+    width: 450px;
 }
 
-h2{
+h2 {
     margin: 0 auto;
     padding: 0;
 }
 
-.ProfileInfo_Name{
-}
 
-.status{
+.status span {
     font-weight: 400;
     font-size: 13px;
     margin: 6px auto 0px 0px;
 }
-.contacts{
+
+.contacts {
     margin-top: 6px;
-    --padding-left-right: 5px;
-}
-.contacts a{
-    text-decoration: none;
-    color: #626d7a;
+    font-size: 13px;
 }
 
-.messageBtn{
+.contacts a {
+    text-decoration: none;
+    color: #626d7a;
+    font-weight: 400;
+}
+
+.messageBtn {
     border-radius: 12px;
-    background-color: #447bba ;
+    background-color: #447bba;
     height: 32px;
     cursor: pointer;
 }
 
-.messageBtn:hover{
-    background-color: #518aca ;
+.messageBtn:hover {
+    background-color: #518aca;
 }
 
-.messageBtn a{
+.messageBtn a {
     font-weight: 600;
     color: white;
     padding: 0 16px;
 }
 
-.panelBtns{
+.panelBtns {
     display: flex;
-    margin-left: 110px;
+    margin-left: 10px;
     height: 32px;
 }
 
-.friendBtn img{
+.friendBtn img {
     width: 25px;
     height: 25px;
     padding: 5px;
 }
 
-.friendBtn{
+.friendBtn {
     background-color: #eaf4ff;
     border-radius: 10px;
     margin-left: 5px;
     cursor: pointer;
 }
 
-.friendBtn:hover{
+.friendBtn:hover {
     background-color: #ddecfc;
 }
+
+.editPanel {
+    display: flex;
+}
+
+.editBtn {
+    border-radius: 12px;
+    background-color: #e5ebf1;
+    height: 32px;
+    cursor: pointer;
+    box-shadow: inset 0px 0.5px 1.5px rgba(63, 63, 63, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editBtn:hover {
+    background-color: #dde0e2;
+}
+
+.editBtn span {
+    font-weight: 600;
+    font-size: 14px;
+    color: #3464ab;
+    padding: 0 16px;
+    margin-bottom: 2px;
+}
+
+.moreBtn {
+    box-shadow: inset 0px 0.5px 1.5px rgba(63, 63, 63, 0.1);
+    background-color: #eaf4ff;
+    border-radius: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+
+}
+
+.moreBtn:hover {
+    background-color: #dde0e2;
+}
+
+.moreBtn img {
+    margin-top: 4px;
+    width: 16px;
+    height: 12px;
+    padding: 5px;
+}
+
+.moreBtn p {
+    font-weight: 600;
+    font-size: 14px;
+    color: #3464ab;
+    
+}
+
+.editNavlink {
+    text-decoration: none;
+}
+
+
+.contacts span {
+    cursor: pointer;
+}
+
+.contacts span:hover {
+    text-decoration: underline;
+}
+
+.AdditionalInfoModal{
+}
+
+.headerInfo{
+    padding: 0 24px;
+    height: 55px;
+    display: flex;
+    width: 550px;
+    justify-content: space-between;
+    border-bottom: #b0b0b1 0.4px solid;
+}
+
+.headerTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close img{
+    
+    width: 24px;
+    height: 24px;
+}
+
+.close{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullInfo{
+    padding: 8px;
+    
+}
+
+.infoBlocks{
+    padding: 8px 0;
+    font-size: 13px;
+    border-bottom: #b0b0b1 0.4px solid;
+}
+
+.statusBlock{
+    color: #626D7A;
+    padding: 0 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    width: 550px;
+}
+
+
+.statusBlock span{
+    color: #2a5885;
+    font-weight: 600;
+}
+.idBlock{
+    padding: 0 16px;
+    color: #626D7A;
+    font-weight: 600;
+}
+
+.idBlock a{
+    color: #2a5885;
+    text-decoration: none;
+}
+
+.idBlock a:hover{
+    text-decoration: underline;
+}
+
+
+.contactsInfo{
+    padding: 8px 0;
+    font-size: 13px;
+}
+
+.contactsLabel h3{
+    margin: 0;
+}
+
+.contactsLabel{
+    padding: 0 0 18px 16px;
+}
+
+
+.custom-file-input {
+    color: transparent;
+  }
+  .custom_file_input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom_file_input::before {
+
+    content: 'Обновить фотографию';
+    color: black;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.5s all;
+  }
+  .custom_file_input:hover::before {
+    border-color: black;
+    transition: 0.5s all;
+  }
+  .custom_file_input:active {
+    outline: 0;
+    transition: 0.5s all;
+  }
+  .custom_file_input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  }

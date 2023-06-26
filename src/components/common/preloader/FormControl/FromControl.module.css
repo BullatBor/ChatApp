@@ -1,13 +1,13 @@
-.Input{
+.Input {
     padding: 8px 12px;
     background-color: #e0e0e2;
-    border: #c9c9cc 0.4px solid ;
+    border: #c9c9cc 0.4px solid;
     border-radius: 8px;
     width: 240px;
     height: 18px;
 }
 
-.Inputs span{
+.Inputs span {
     font-size: 10px;
     color: red;
 }
@@ -16,11 +16,11 @@
     margin-bottom: 15px;
 }
 
-.ErrorInput{
+.ErrorInput {
     border: red 1px solid;
 }
 
-.searchInputs input{
+.searchInputs input {
     border: 0;
     padding: 0 40px 0 36px;
     background-color: #edeef0;
@@ -30,10 +30,28 @@
     font-size: 14px;
 }
 
-.searchInputs input:hover{
+.searchInputs input:hover {
     background-color: #e4e5e6;
 }
 
-.searchInputs{
+.searchInputs {
     padding: 8px 0;
+}
+
+.statusEdit textarea {
+    padding: 5px 7px 9px;
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    resize: none;
+    overflow: hidden;
+    border: rgba(63, 63, 63, 0.3) 0.5px solid;
+}
+
+.EditDefaultInput input{
+    width: 300px;
+    border-radius: 10px;
+    border: rgba(63, 63, 63, 0.3) 0.5px solid;
+    padding: 5px 7px 9px;
+    margin-top: 5px;
 }
