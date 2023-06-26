@@ -43,26 +43,34 @@ class App extends React.Component {
     }
     else
       return (
-        <div className="app-wrapper">
-          <HeaderContainer />
-          <Menu />
-          <div className='app-wrapper-content'>
-            <Suspense fallback={<Preloader />}>
-              <Routes>
-                <Route path='/' element={<Navigate to="/profile" />} />
-                <Route path='/profile/:userId?' element={<ProfileContainer />} />
-                <Route path='/dialogs' element={<DialogsContainer />} />
-                <Route path='/friends' element={<UsersContainer />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/news' element={<NewsContainer />} />
-                <Route path='/music' element={<Music />} />
-                <Route path='/settings' element={<Settings />} />
-                <Route path='/edit/:page?' element={<EditContainer />} />
-                <Route path='*' element={<ProfileContainer />} />
-              </Routes>
-            </Suspense>
-          </div>
-        </div>
+        <div className="app-wrapper" >
+          {
+            this.props.userId 
+            ?
+            <>
+              <HeaderContainer />
+              <Menu />
+              <div className='app-wrapper-content'>
+                <Suspense fallback={<Preloader />}>
+                  <Routes>
+                    <Route path='/' element={<Navigate to="/profile" />} />
+                    <Route path='/profile/:userId?' element={<ProfileContainer />} />
+                    <Route path='/dialogs' element={<DialogsContainer />} />
+                    <Route path='/friends' element={<UsersContainer />} />
+                    {/*<Route path='/login' element={<Login />} />*/}
+                    <Route path='/news' element={<NewsContainer />} />
+                    <Route path='/music' element={<Music />} />
+                    <Route path='/settings' element={<Settings />} />
+                    <Route path='/edit/:page?' element={<EditContainer />} />
+                    <Route path='*' element={<ProfileContainer />} />
+                  </Routes>
+                </Suspense>
+              </div>
+            </>
+            :
+            <Login />
+          }
+        </div >
       );
   }
 }

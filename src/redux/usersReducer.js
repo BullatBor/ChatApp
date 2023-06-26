@@ -1,13 +1,13 @@
 import { followAPI, usersAPI } from "../api/api";
 import { updateObjectInArray } from "../utils/object-helpers";
 
-const FOLLOW = "FOLLOW";
-const UNFOLLOW = "UNFOLLOW"
-const SET_USERS = "SET-USERS"
-const SET_CURRENT_PAGE = "SET-CURRENT-PAGE"
-const SET_TOTAL_COUNT = "SET-TOTAL_COUNT"
-const SET_LOADER = "SET-LOADER"
-const FOLLOWING_IN_PROGRESS = "FOLLOWING-IN-PROGRESS"
+const FOLLOW = "users/FOLLOW";
+const UNFOLLOW = "users/UNFOLLOW"
+const SET_USERS = "users/SET-USERS"
+const SET_CURRENT_PAGE = "users/SET-CURRENT-PAGE"
+const SET_TOTAL_COUNT = "users/SET-TOTAL_COUNT"
+const SET_LOADER = "users/SET-LOADER"
+const FOLLOWING_IN_PROGRESS = "users/FOLLOWING-IN-PROGRESS"
 
 let initialState = {
     users: [

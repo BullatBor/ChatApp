@@ -1,7 +1,7 @@
-const ADD_NEWS = "ADD-NEWS"
-const ADD_LIKE = "ADD-LIKE"
-const CHANGE_TEXT = "CHANGE-TEXT";
-const VISIBLE_COMMENT = "VISIBLE-COMMENT"
+const ADD_NEWS = "news/ADD-NEWS"
+const ADD_LIKE = "news/ADD-LIKE"
+const CHANGE_TEXT = "news/CHANGE-TEXT";
+const VISIBLE_COMMENT = "news/VISIBLE-COMMENT"
 
 
 let initialState = {
