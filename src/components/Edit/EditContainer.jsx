@@ -76,8 +76,6 @@ function withRoute(Component) {
   return ComponentWithRouterProp;
 }
 
-
-
 let EditContainer = connect(mapStateToProps, { getProfileThunkCreator, getProfileStatusThunkCreator, 
   saveProfileThunkCreator, updateProfileStatusThunkCreator })
   (withRoute(EditClass));

@@ -9,9 +9,28 @@ const SET_DEFAULT_PHOTO = "profile/SET-DEFAULT-PHOTO"
 
 let initialState = {
     posts: [
-        { id: 1, message: "sdfsdfsefsef", likesCount: 12 },
-        { id: 2, message: "sdfsdfsefsef", likesCount: 12 },
-        { id: 3, message: "sdfsdfsefsef", likesCount: 12 }
+        { id: 1, message: "meme", img:"https://sun4-19.userapi.com/impg/zIZtUkn-vWEqhSQk4B3AEmZsDXopIdemzKPBjA/9Tj_UP2tVx0.jpg?size=526x624&quality=96&sign=425cfd1050990b40dc3f32d612dc40fc&type=album", 
+        comments: [
+            {id: 0, text: "Comment1"}
+        ],
+        date: "20-06-2023",
+        likesCount: 3 
+    },
+
+        { id: 2, message: "start", img: null,
+        comments: [
+            {id: 0, text: "Comment1"}
+        ],
+        date: "25-04-2023",
+        likesCount: 9 },
+
+        { id: 3, message: "Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.", 
+        img: null,
+        comments: [
+            {id: 0, text: "Comment1"}
+        ],
+        date: "10-05-2023",
+        likesCount: 12 }
     ],
     profile: null,
     isFetching: true,
@@ -25,6 +44,8 @@ const profileReducer = (state = initialState, action) => {
             let newPost = {
                 id: state.posts.length + 1,
                 message: action.PostText,
+                date: action.date,
+                comments: 0,
                 likesCount: 0
             };
             return {
@@ -65,9 +86,10 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPost = (text) => ({
+export const addPost = (text, date) => ({
     type: ADD_POST,
-    PostText: text
+    PostText: text,
+    date: date
 })
 export const setUserProfile = (profile) => {
     return {

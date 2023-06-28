@@ -6,6 +6,7 @@ const getUsersSelector = (state) => {
 
 export const getUsers = createSelector( getUsersSelector, (users) => {
     return users.filter(u => true);
+    //users.filter(u => u.followed == true);
 })
 
 export const getPageSize = (state) => {

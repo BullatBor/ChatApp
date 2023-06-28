@@ -27,8 +27,8 @@ const mapStateToProps = (state) => {//Тут для отрисовки возв�
   return {
     posts: state.ProfilePage.posts,
     newPostText: state.ProfilePage.PostText,
-    profileImage: state.ProfilePage.profile.photos.large,
-    defaultImage: state.ProfilePage.AvatarImg
+    defaultImage: state.ProfilePage.AvatarImg,
+    fullName: state.ProfilePage.profile?.fullName
   }
 }
 

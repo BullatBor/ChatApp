@@ -8,7 +8,8 @@ import { Post } from './Post/Post'
 
 export const MyPosts = (props) => {
   const onAddPost = (values, { setSubmitting }) => {
-    props.addPost(values.textField);
+    const date = CreateDate();
+    props.addPost(values.textField, date);
     values.textField = ""
     setTimeout(() => {
       setSubmitting(false);
@@ -24,7 +25,11 @@ export const MyPosts = (props) => {
     return error
   }
 
-  let mass = props.posts;
+  let mass = props.posts.sort(function (a, b) {
+    var dateA = a.date.split('-');
+    var dateB = b.date.split('-');
+    return  new Date(dateB[2], dateB[1] - 1, dateB[0]) - new Date(dateA[2], dateA[1] - 1, dateA[0]);
+  });
 
   const [isFocus, setFocus] = useState(false)
 
@@ -42,8 +47,8 @@ export const MyPosts = (props) => {
       <div className={classes.postsBlock}>
         {
           props.isOwner &&
-          <div className={classes.NewPost} onBlur={FocusInput2}>
-            <img src={props.profileImage || props.defaultImage} />
+          <div className={classes.NewPost} >
+            <img src={props.defaultImage} />
             <Formik
               initialValues={{ textField: '' }}
               onSubmit={onAddPost}
@@ -63,7 +68,11 @@ export const MyPosts = (props) => {
         <div className={classes.posts}>
           {
             mass.map(item => {
-              return <Post key={item.id} message={item.message} likesCount={item.likesCount} />
+              return <Post key={item.id} img={item.img} message={item.message}
+                likesCount={item.likesCount} comments={item.comments}
+                date={item.date}
+                fullName={props.fullName} defaultImage={props.defaultImage}
+              />
             })
 
           }
@@ -74,3 +83,12 @@ export const MyPosts = (props) => {
   )
 }
 
+const CreateDate = () => {
+  const today = new Date(); // Создаем объект Date для сегодняшней даты
+  const day = String(today.getDate()).padStart(2, "0"); // Получаем день месяца и добавляем ведущий ноль, если день месяца состоит из одной цифры
+  const month = String(today.getMonth() + 1).padStart(2, "0"); // Получаем месяц (от 0 до 11) и добавляем ведущий ноль, если месяц состоит из одной цифры
+  const year = today.getFullYear(); // Получаем год
+  const dateString = `${day}-${month}-${year}`; // Создаем строку в нужном формате
+  console.log(dateString); // Выводим результат в консоль: "27-06-2023"
+  return dateString;
+}

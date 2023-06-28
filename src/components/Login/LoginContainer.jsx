@@ -66,15 +66,17 @@ export class LoginContainer extends React.Component {
       return <Navigate to={"/profile"} />
     }
     return (
-      <div className={classes.LoginForm}>
-        <div className={classes.LoginPanel}>
-          <div className={classes.logoBlock}>
-            <div className={classes.logo}>
-              <img src={Logo} />
+      <div className={classes.LoginPage}>
+        <div className={classes.LoginForm}>
+          <div className={classes.LoginPanel}>
+            <div className={classes.logoBlock}>
+              <div className={classes.logo}>
+                <img src={Logo} />
+              </div>
+              <span>Вход в JS net</span>
             </div>
-            <span>Вход в JS net</span>
+            <LoginForm LoginThunk={this.props.LoginThunkCreator} captchaUrl={this.props.captchaUrl} />
           </div>
-          <LoginForm LoginThunk={this.props.LoginThunkCreator} captchaUrl={this.props.captchaUrl} />
         </div>
       </div>
     )
