@@ -1,9 +1,116 @@
 .Layer {
-    
     margin-top: 16px;
     width: 550px;
-    height: 20px;
     background-color: white;
     border-radius: 15px;
-    border: #b0b0b1 1px solid;
+    box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
+    padding: 8px 0;
+}
+
+.header {
+    display: flex;
+    margin-left: 8px;
+}
+
+.headerItem {
+    margin: 8px 0 8px 12px;
+    padding: 2px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.headerItem:hover {
+    background-color: #edeef0;
+    transition: 0.3s all;
+}
+
+.headerItemActive {
+    box-shadow: 0px 0px 2px rgba(63, 63, 63, 0.6);
+}
+
+.headerItemActive span {
+    color: #346297;
+}
+
+.headerItemNotActive {
+    color: #818c99;
+}
+
+.groupContact {
+    padding: 8px 12px 12px;
+}
+
+.groupPhoto img {
+    cursor: pointer;
+    width: 168px;
+    height: 168px;
+    border-radius: 5px;
+    margin-right: 3px;
+}
+
+.groupPhoto {
+    display: flex;
+    flex-direction: column;
+}
+
+.footerBtn {
+    position: relative;
+    margin-top: 5px;
+}
+
+.footerBtn input {
+    width: 251px;
+}
+
+.footerBtn input::before {
+    content: 'Загрузить фото';
+    color: black;
+    display: inline-block;
+    background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    text-shadow: 1px 1px #fff;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.5s all;
+}
+
+.footerBtn input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.photoBtn{
+    position: absolute;
+    top: 0;
+    height: 30px;
+    width: 251px;
+    background-color: #e5ebf1;
+    cursor: pointer;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: #3462ae;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.photoBtn:hover {
+    background-color: #657a8d;
+}
+
+.NotPresencs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #818c99;
 }

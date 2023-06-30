@@ -1,7 +1,7 @@
 import React from 'react'
 import { Content } from './Content'
 import { connect } from 'react-redux';
-import { getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator, saveProfilePhotoThunkCreator} from '../../redux/profileReducer';
+import { getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator, saveProfilePhotoThunkCreator, addPhotoInAlbum} from '../../redux/profileReducer';
 import { Preloader } from '../common/preloader/Preloader';
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { withAuthNavigate } from '../../hoc/withAuthNavigate';
@@ -46,7 +46,8 @@ const mapStateToProps = (state) => ({
     isFetching: state.ProfilePage.isFetching,
     status: state.ProfilePage.status,
     userId: state.AuthPage.userId,
-    avatar: state.ProfilePage.AvatarImg
+    avatar: state.ProfilePage.AvatarImg,
+    photoAlbum: state.ProfilePage.photoAlbum
 })
 
 function withRouter(Component) {
@@ -66,7 +67,8 @@ function withRouter(Component) {
 }
 
 let ProfileContainer = compose(
-    connect(mapStateToProps, { getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator, saveProfilePhotoThunkCreator }),
+    connect(mapStateToProps, { getProfileThunkCreator, getProfileStatusThunkCreator, updateProfileStatusThunkCreator, 
+        saveProfilePhotoThunkCreator, addPhotoInAlbum }),
     withAuthNavigate,
     withRouter
 )(ContentContainer)

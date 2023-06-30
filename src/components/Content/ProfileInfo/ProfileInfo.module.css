@@ -285,7 +285,6 @@ h2 {
     visibility: hidden;
   }
   .custom_file_input::before {
-
     content: 'Обновить фотографию';
     color: black;
     display: inline-block;

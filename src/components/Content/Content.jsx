@@ -10,7 +10,7 @@ export const Content = (props) => {
       <ProfileInfo savePhoto={props.savePhoto} isOwner={props.isOwner} avatar={props.avatar} profile={props.profile} status={props.status} updateStatus={props.updateProfileStatusThunkCreator}/>
       <div className={classes.ProfilePosts}>
         <div>
-          <LeftColumn isOwner={props.isOwner}/>
+          <LeftColumn isOwner={props.isOwner} avatar={props.avatar} album={props.photoAlbum} addPhoto={props.addPhotoInAlbum}/>
         </div>
         <div>
           <RightColumn/>
