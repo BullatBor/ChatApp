@@ -53,7 +53,10 @@
 .LogPhoto {
   width: 48px;
   height: 48px;
-  padding-left: 10px;  
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .LogPhoto:hover {
@@ -75,14 +78,15 @@
 .modal {
   position: absolute;
   right: 0;
+  top: 48px;
   z-index: 9999;
   padding: 12px 0 8px;
   background-color: white;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
-  width: 302px;
-
+  margin-right: 20px;
+  width: 250px;
 }
 
 .item img {
@@ -115,4 +119,8 @@
 .itemPanel:hover {
   cursor: pointer;
   background-color: #f0f2f5;
+}
+
+.Exit{
+  position: relative;
 }

@@ -4,12 +4,15 @@ import React, { PureComponent, useState } from 'react'
 import { Textarea } from '../../common/preloader/FormControl/FormControl'
 import classes from './MyPosts.module.css'
 import { Post } from './Post/Post'
+import photoCam from "../../../assets/PhotoCam.png"
 
 
 export const MyPosts = (props) => {
+  const [file, setFile] = useState(null);
+
   const onAddPost = (values, { setSubmitting }) => {
     const date = CreateDate();
-    props.addPost(values.textField, date);
+    props.addPost(values.textField, date, file);
     values.textField = ""
     setTimeout(() => {
       setSubmitting(false);
@@ -28,7 +31,7 @@ export const MyPosts = (props) => {
   let mass = props.posts.sort(function (a, b) {
     var dateA = a.date.split('-');
     var dateB = b.date.split('-');
-    return  new Date(dateB[2], dateB[1] - 1, dateB[0]) - new Date(dateA[2], dateA[1] - 1, dateA[0]);
+    return new Date(dateB[2], dateB[1] - 1, dateB[0]) - new Date(dateA[2], dateA[1] - 1, dateA[0]);
   });
 
   const [isFocus, setFocus] = useState(false)
@@ -38,8 +41,10 @@ export const MyPosts = (props) => {
     else setFocus(true)
   }
 
-  const FocusInput2 = () => {
-    alert("sfsdf")
+  const mainPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      setFile(URL.createObjectURL(e.target.files[0]))
+    }
   }
 
   return (
@@ -50,16 +55,21 @@ export const MyPosts = (props) => {
           <div className={classes.NewPost} >
             <img src={props.defaultImage} />
             <Formik
-              initialValues={{ textField: '' }}
+              initialValues={{ textField: '', filePath: null }}
               onSubmit={onAddPost}
-            >{({ errors, touched, isSubmitting }) => (
+            >{({ errors, touched, isSubmitting, values }) => (
               <Form>
                 <Field className={classes.NewPostInput} component={Textarea} name={"textField"} validate={validateText} placeholder="Что у вас нового?" onFocus={FocusInput} />
                 {
                   isFocus &&
-                  <button className={classNames(classes.NewPostBtn, { [classes.BtnDisabled]: errors.textField })} type="submit" disabled={isSubmitting}>Опубликовать</button>
+                  <div className={classes.footerBtns}>
+                    <button className={classNames(classes.NewPostBtn, { [classes.BtnDisabled]: errors.textField })} type="submit" disabled={isSubmitting}>Опубликовать</button>
+                    <div className={classes.fileReadBlock}>
+                      <img src={photoCam} />
+                      <input type={"file"} title={"Загрузить фото"} name={"filePath"} onChange={mainPhotoSelected}/>
+                    </div>
+                  </div>
                 }
-
               </Form>
             )}
             </Formik>

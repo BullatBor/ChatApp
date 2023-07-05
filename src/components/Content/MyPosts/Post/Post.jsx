@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import classes from './Post.module.css'
 import Like from "../../../../assets/Likes.png"
 import Comment from "../../../../assets/comment.png"
+import defaultPhoto from "../../../../assets/ava.png"
 import cn from 'classnames'
 
 export const Post = (props) => {
@@ -22,7 +23,7 @@ export const Post = (props) => {
   return (
     <div className={classes.postContent}>
       <div className={classes.postHeader}>
-        <img src={props.defaultImage} />
+        <img src={props.defaultImage || defaultPhoto} />
         <div className={classes.postHeaderTitle}>
           <span>{props.fullName}</span>
           <time>{date}</time>

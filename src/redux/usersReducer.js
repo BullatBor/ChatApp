@@ -95,10 +95,10 @@ export const setFollowButton = (load, userId) => ({
     userId
 })
 
-export const getUsersThunkCreator = (currentPage, pageSize) => {//ThunkCreator
+export const getUsersThunkCreator = (currentPage, pageSize, isFriend) => {//ThunkCreator
     return async (dispatch) => { //Thunk функция которая выполняет асинхр работу и делает диспатчи
         dispatch(setLoader(true))
-        const data = await usersAPI.getUsers(currentPage, pageSize); //запрос на сервер
+        const data = await usersAPI.getUsers(currentPage, pageSize, isFriend); //запрос на сервер
         dispatch(setLoader(false))
         dispatch(setUsers(data.items))
         dispatch(setTotalCount(data.totalCount))

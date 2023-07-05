@@ -4,7 +4,7 @@
 
 .ProfilePosts{
     display: grid;
-    grid-template-columns: 550px 450px;
+    grid-template-columns: 600px 400px;
     border-radius: 15px;
 }
 

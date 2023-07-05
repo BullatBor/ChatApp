@@ -7,7 +7,12 @@ export const Menu = () => {
     <div className={classes.nav}>
       <NavLink to={"/profile"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
         <div className={classes.item}>
-          Профиль
+          Моя страница
+        </div>
+      </NavLink>
+      <NavLink to={"/news"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
+        <div className={classes.item}>
+          Новости
         </div>
       </NavLink>
       <NavLink to={"/dialogs"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
@@ -18,11 +23,6 @@ export const Menu = () => {
       <NavLink to={"/friends"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
         <div className={`${classes.item} ${classes.active}`}>
           Друзья
-        </div>
-      </NavLink>
-      <NavLink to={"/news"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>
-        <div className={classes.item}>
-          Новости
         </div>
       </NavLink>
       <NavLink to={"/music"} className={({ isActive }) => (isActive ? classes.activeLink : classes.notActiveLink)}>

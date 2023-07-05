@@ -7,11 +7,12 @@ const SET_STATUS = "profile/SET-STATUS"
 const SET_PROFILE_PHOTO = "profile/SET-PROFILE-PHOTO"
 const SET_DEFAULT_PHOTO = "profile/SET-DEFAULT-PHOTO"
 const ADD_PHOTO_IN_ALBUM = "profile/ADD-PHOTO-IN-ALBUM"
+const GET_PHOTOS_IN_ALBUM = "profile/GET-PHOTOS-IN-ALBUM"
 
 let initialState = {
     posts: [
         {
-            id: 1, message: "meme", img: "https://sun4-19.userapi.com/impg/zIZtUkn-vWEqhSQk4B3AEmZsDXopIdemzKPBjA/9Tj_UP2tVx0.jpg?size=526x624&quality=96&sign=425cfd1050990b40dc3f32d612dc40fc&type=album",
+            id: 1, message: "Есть возможность опубликовывать фото", img: "https://sun4-19.userapi.com/impg/zIZtUkn-vWEqhSQk4B3AEmZsDXopIdemzKPBjA/9Tj_UP2tVx0.jpg?size=526x624&quality=96&sign=425cfd1050990b40dc3f32d612dc40fc&type=album",
             comments: [
                 { id: 0, text: "Comment1" }
             ],
@@ -38,8 +39,8 @@ let initialState = {
             likesCount: 12
         }
     ],
-    photoAlbum: [ { id: 0, img: "https://www.befunky.com/images/prismic/5ddfea42-7377-4bef-9ac4-f3bd407d52ab_landing-photo-to-cartoon-img5.jpeg?auto=avif,webp&format=jpg&width=863"},
-     { id: 1, img: "https://www.befunky.com/images/prismic/5ddfea42-7377-4bef-9ac4-f3bd407d52ab_landing-photo-to-cartoon-img5.jpeg?auto=avif,webp&format=jpg&width=863"}
+    photoAlbum: [{ id: 0, img: "https://www.befunky.com/images/prismic/5ddfea42-7377-4bef-9ac4-f3bd407d52ab_landing-photo-to-cartoon-img5.jpeg?auto=avif,webp&format=jpg&width=863" },
+    { id: 1, img: "https://www.befunky.com/images/prismic/5ddfea42-7377-4bef-9ac4-f3bd407d52ab_landing-photo-to-cartoon-img5.jpeg?auto=avif,webp&format=jpg&width=863" }
     ],
     profile: null,
     isFetching: true,
@@ -53,6 +54,7 @@ const profileReducer = (state = initialState, action) => {
             let newPost = {
                 id: state.posts.length + 1,
                 message: action.PostText,
+                img: action.image,
                 date: action.date,
                 comments: 0,
                 likesCount: 0
@@ -90,7 +92,17 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 AvatarImg: action.photo
             }
-        case ADD_PHOTO_IN_ALBUM:{
+        case GET_PHOTOS_IN_ALBUM: {
+            let newImg = {
+                id: state.photoAlbum.length + 1,
+                img: action.photo
+            }
+            return {
+                ...state,
+                photoAlbum: [newImg]
+            }
+        }
+        case ADD_PHOTO_IN_ALBUM: {
             let newImg = {
                 id: state.photoAlbum.length + 1,
                 img: action.photo
@@ -105,9 +117,10 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPost = (text, date) => ({
+export const addPost = (text, date, image) => ({
     type: ADD_POST,
     PostText: text,
+    image: image,
     date: date
 })
 export const setUserProfile = (profile) => {
@@ -144,10 +157,15 @@ export const addPhotoInAlbum = (photo) => ({
     photo: photo
 })
 
+export const GetPhotosInAlbum = (photo) => ({
+    type: GET_PHOTOS_IN_ALBUM,
+    photo: photo
+})
+
 export const getProfileThunkCreator = (userId = 2) => {
     return async (dispatch) => {
         const data = await usersAPI.getProfileInfo(userId);
-        if(data.photos.large != undefined) dispatch(addPhotoInAlbum(data.photos.large));
+        dispatch(GetPhotosInAlbum(data.photos.large));
         dispatch(setUserProfile(data));
         dispatch(setLoader(false))
     }
@@ -178,7 +196,7 @@ export const saveProfilePhotoThunkCreator = (file) => {
     return async (dispatch) => {
         const data = await profileAPI.savePhoto(file);
         if (data.resultCode === 0) {
-            dispatch(setProfilePhotoSuccess(data.data.photos))
+            dispatch(setProfilePhotoSuccess(data.data.photos.large))
             dispatch(setDefaultPhoto(data.data.photos.large))
         }
     }

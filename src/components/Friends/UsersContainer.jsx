@@ -14,7 +14,7 @@ import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, get
 export class UsersAPIComponent extends React.Component {
   componentDidMount() {
     const {currentPage, pageSize} = this.props
-    this.props.getUsersThunkCreator(currentPage, pageSize)
+    this.props.getUsersThunkCreator(currentPage, pageSize, true)
   }
 
 

@@ -8,8 +8,8 @@ const axiosInstance = axios.create({
 })
 
 export const usersAPI = {
-    async getUsers(currentPage = 1, pageSize = 10) {
-        return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
+    async getUsers(currentPage = 1, pageSize = 10, isFriend = true) {
+        return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}&friend=${isFriend}`)
         .then(responce => responce.data)
     },
     follow(id) {
@@ -85,5 +85,17 @@ export const securityAPI = {
         return axiosInstance.delete(`security/get-captcha-url`).then(responce => {           
             return responce.data
         })
+    }
+}
+
+export const dialogsAPI = {
+    
+    async newChat(userId = 29436) {
+        return axiosInstance.put("dialogs/", {userId: userId}).then(responce => {
+            return responce
+        })
+        const responce = await axiosInstance.put('dialogs', userId);
+        debugger;
+        return responce.data;
     }
 }

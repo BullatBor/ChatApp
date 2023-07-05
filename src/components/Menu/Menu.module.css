@@ -2,6 +2,7 @@
   grid-area: bar;
   background-color: #edeef0;
   padding: 20px;
+  z-index: 2;
   }
 
   .item{

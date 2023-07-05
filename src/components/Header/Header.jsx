@@ -4,6 +4,7 @@ import { MessageInput, SearchInput } from '../common/preloader/FormControl/FormC
 import ExitIcon from "./../../assets/exit.png"
 import vkIcon from "./../../assets/vkIcon.png"
 import classes from './Header.module.css';
+import { ModalForExit } from './ModalHeader/ModalForExit';
 
 
 const Header = (props) => {
@@ -28,7 +29,7 @@ const Header = (props) => {
         <div className={classes.vkIcon}>
           <img src={vkIcon} />
           <span>ВКОНТАНТЕ</span>
-        </div>      
+        </div>
         <SearchForm />
       </div>
       <div className={classes.loginBlock} onBlur={hideModal}>
@@ -36,21 +37,23 @@ const Header = (props) => {
           props.isAuth
           &&
           <div className={classes.LogPhoto} onClick={showModal} >
-            <img src={ props.defaultPhoto} />
-          </div>
-        }
-        {
-          isShow &&
-          <div className={classes.modal} onClick={logout} >
-            <div className={classes.itemPanel}>
-              <div className={classes.item}>
-                <img src={ExitIcon} />
-                <span>Выйти</span>
-              </div>
-            </div>
+            <img src={props.defaultPhoto} />
           </div>
         }
       </div>
+      {
+          isShow &&
+            <ModalForExit active={isShow} setActive={setShow}>
+              <div className={classes.modal} >
+                <div className={classes.itemPanel} onClick={logout}>
+                  <div className={classes.item}>
+                    <img src={ExitIcon} />
+                    <span>Выйти</span>
+                  </div>
+                </div>
+              </div>
+            </ModalForExit>
+        }
     </header>
   )
 }
