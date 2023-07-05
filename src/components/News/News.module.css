@@ -117,6 +117,11 @@
     height: 200px;
 }
 
+.postBody{
+    font-size: 13px;
+    text-align: justify;
+}
+
 .comments{
     border-top: 0.4px solid;
 }

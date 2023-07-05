@@ -1,39 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './News.module.css'
 import Like from '../../assets/Likes.png'
 import Comment from '../../assets/comment.png'
 
 
 export const NewsPost = (props) => {
+  const [like, setLike] = useState(0);
+  const [comments, setComments] = useState(0);
+  const [visibleComment, setVisibleComment] = useState(false);
   const addLike = () => {
-    props.addLike(props.id)
+    if(like == 1){
+      setLike(like-1)
+    } else setLike(like+1)
   }
-  const setVisibleComment = () => {
-    props.visibleComm(props.id)
+  const commentShow = () => {
+    setVisibleComment(!visibleComment)
   }
   return (
     <div className={classes.Post}>
         <div className={classes.postHeader}>
-            <span>{props.text}</span>
+            <span>{props.title}</span>
         </div> 
         <div className={classes.postBody}>
+          {
+            props.body ?
+            props.body
+            :
             <img src={props.img}/>
+
+          }           
         </div>
 
           <div className={classes.footer}>
             <div className={classes.footerItem} onClick={addLike}>
               <img src={Like} />
-              <span>{props.likesCount}</span>
+              <span>{like}</span>
             </div>
-            <div className={classes.footerItem} onClick={setVisibleComment}> 
+            <div className={classes.footerItem} onClick={commentShow}> 
               <img src={Comment} />
-              <span>{props.comments.length}</span>
+              <span>{comments}</span>
             </div> 
           </div>        
           {
-            props.commentVisible &&
+            visibleComment &&
             <div className={classes.comments}>
-              {props.comments[0].text}
+              comment
             </div>
           }
     </div>

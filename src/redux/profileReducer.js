@@ -1,4 +1,4 @@
-import { usersAPI, profileAPI } from "../api/api";
+import { usersAPI, profileAPI, postsAPI } from "../api/api";
 
 const ADD_POST = "profile/ADD-POST";
 const SET_USER_PROFILE = "profile/SET-USER-PROFILE"
@@ -211,6 +211,13 @@ export const saveProfileThunkCreator = (profile, setStatus) => {
             setStatus({ success: "Изменения сохранены" })
         }
         else setStatus({ error: data.messages[0] })
+    }
+}
+
+export const getPosts = () => {
+    return async (dispatch) => {
+        const posts = await postsAPI.getPosts();
+        debugger
     }
 }
 

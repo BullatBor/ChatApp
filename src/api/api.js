@@ -99,3 +99,11 @@ export const dialogsAPI = {
         return responce.data;
     }
 }
+
+export const postsAPI = {
+    async getPosts(){
+        const responce = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
+        const json = await responce.json();
+        return json;
+    }
+}

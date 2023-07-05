@@ -1,9 +1,10 @@
 .nav{
+  z-index: 2;
   grid-area: bar;
   background-color: #edeef0;
   padding: 20px;
-  z-index: 2;
   }
+
 
   .item{
     align-items: center;

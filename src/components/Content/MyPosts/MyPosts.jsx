@@ -5,14 +5,18 @@ import { Textarea } from '../../common/preloader/FormControl/FormControl'
 import classes from './MyPosts.module.css'
 import { Post } from './Post/Post'
 import photoCam from "../../../assets/PhotoCam.png"
+import {useDispatch} from "react-redux"
+import { getPosts } from '../../../redux/profileReducer'
 
 
 export const MyPosts = (props) => {
   const [file, setFile] = useState(null);
+  const dispatch = useDispatch();
 
   const onAddPost = (values, { setSubmitting }) => {
     const date = CreateDate();
     props.addPost(values.textField, date, file);
+    dispatch(getPosts())
     values.textField = ""
     setTimeout(() => {
       setSubmitting(false);

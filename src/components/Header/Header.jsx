@@ -24,37 +24,39 @@ const Header = (props) => {
   }
 
   return (
-    <header className={classes.header}>
-      <div className={classes.search}>
-        <div className={classes.vkIcon}>
-          <img src={vkIcon} />
-          <span>ВКОНТАНТЕ</span>
-        </div>
-        <SearchForm />
-      </div>
-      <div className={classes.loginBlock} onBlur={hideModal}>
-        {
-          props.isAuth
-          &&
-          <div className={classes.LogPhoto} onClick={showModal} >
-            <img src={props.defaultPhoto} />
+    <div className={classes.headerBlock}>
+      <header className={classes.header}>
+        <div className={classes.search}>
+          <div className={classes.vkIcon}>
+            <img src={vkIcon} />
+            <span>ВКОНТАНТЕ</span>
           </div>
-        }
-      </div>
-      {
+          <SearchForm />
+        </div>
+        <div className={classes.loginBlock} onBlur={hideModal}>
+          {
+            props.isAuth
+            &&
+            <div className={classes.LogPhoto} onClick={showModal} >
+              <img src={props.defaultPhoto} />
+            </div>
+          }
+        </div>
+        {
           isShow &&
-            <ModalForExit active={isShow} setActive={setShow}>
-              <div className={classes.modal} >
-                <div className={classes.itemPanel} onClick={logout}>
-                  <div className={classes.item}>
-                    <img src={ExitIcon} />
-                    <span>Выйти</span>
-                  </div>
+          <ModalForExit active={isShow} setActive={setShow}>
+            <div className={classes.modal} >
+              <div className={classes.itemPanel} onClick={logout}>
+                <div className={classes.item}>
+                  <img src={ExitIcon} />
+                  <span>Выйти</span>
                 </div>
               </div>
-            </ModalForExit>
+            </div>
+          </ModalForExit>
         }
-    </header>
+      </header>
+    </div>
   )
 }
 

@@ -1,9 +1,15 @@
 .header {
-  grid-area: head;
-  background-color: white;
-  border-bottom: #b8b8ce7a 1px solid;
+  width: 1150px;
   display: flex;
   position: relative;
+}
+.headerBlock{
+  width: 100%;
+  grid-area: head;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border-bottom: #b8b8ce7a 1px solid;
 }
 
 .search {
