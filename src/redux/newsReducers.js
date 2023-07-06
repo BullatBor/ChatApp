@@ -26,7 +26,7 @@ export const newsReducer = (state = initialState, action) => {
         case SET_NEWS:
             return {
                 ...state,
-                news: [...action.posts, ...state.news]
+                news: [...action.posts]
             }
         default:
             return state;

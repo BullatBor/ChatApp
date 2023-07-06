@@ -1,17 +1,15 @@
 .app-wrapper {
-  margin: 0 auto;
   display: grid;
   background-color: #edeef0;
   width: 100%;
-  position: relative;
   grid-template-areas: 
-  "head head";
-
-  grid-template-columns: 2fr 10fr;
+  "head"
+  "content";
+  grid-template-rows: 48px 1fr;
+  justify-content: center;
 }
 
 .app-wrapper-content{
-  position: relative;
   grid-area: main;
   background-color: #edeef0;
   padding-top: 20px;
@@ -19,10 +17,20 @@
 }
 
 .content{
-  width: 1150px;
-  display: flex;
-  justify-content: center;
+  width: 1200px;
+  display: grid;
+  grid-area: content;
   grid-template-areas: 
   "bar main";
-  grid-template-rows: 48px 1fr;
+  grid-template-columns: 7fr 10fr; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container{
+  background-color: #edeef0;
+  height: 100vh;
+  overflow-y: scroll;
+  z-index: 5;
+  position: relative;
 }
