@@ -13,7 +13,7 @@ export const Content = (props) => {
           <LeftColumn isOwner={props.isOwner} avatar={props.avatar} album={props.photoAlbum} addPhoto={props.addPhotoInAlbum}/>
         </div>
         <div>
-          <RightColumn friends={props.friends} isOwner={props.isOwner}/>
+          <RightColumn friends={props.friends} isOwner={props.isOwner} isFetching={props.isFetch}/>
         </div>
         
       </div>

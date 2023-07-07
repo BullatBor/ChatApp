@@ -9,12 +9,12 @@ export const FriendsSlide = (props) => {
   const listRef = useRef(null);
 
   useEffect(() => {
-    props.getUsers(3, 8, true);
+    props.getUsers(3, 6, true);
   }, []);
 
   const handleScrollLeft = () => {
-    if (position - 100 < -230) setPosition(-230);
-      else setPosition(position - 100);
+    if (position - 100 < -230) setPosition(-160);
+      else setPosition(position - 80);
 
   };
 
@@ -22,7 +22,7 @@ export const FriendsSlide = (props) => {
     if (position + 100 > 0) {
       setPosition(0);
     }
-    else setPosition(position + 100); // Измените значение смещения, чтобы подстроиться под ваш список
+    else setPosition(position + 80); // Измените значение смещения, чтобы подстроиться под ваш список
   };
   return (
     <div className={classes.SlideBlock}>

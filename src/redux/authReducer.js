@@ -42,8 +42,8 @@ export const AuthThunkCreator = () => {
         const data = await authAPI.auth();
         if (data.resultCode === 0) {
             usersAPI.getProfileInfo(data.data.id).then(data_1 => {
-                dispatch(setUserProfile(data_1));
-                dispatch(setDefaultPhoto(data_1.photos.large))
+                dispatch(setUserProfile(data_1));            
+                data_1.photos.large !== null && dispatch(setDefaultPhoto(data_1.photos.large))
             });
             let { id: id_1, email, login } = data.data;
             dispatch(setUserData(id_1, email, login, true));

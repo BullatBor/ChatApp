@@ -15,7 +15,7 @@ let initialState = {
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: true,
+    isFetching: false,
     followingInProgress: []//массив с id польз-ей у которых нажата кнопка подписаться/отписаться на время выполнения запросан а сервер
 }
 
@@ -99,8 +99,8 @@ export const getUsersThunkCreator = (currentPage, pageSize, isFriend) => {//Thun
     return async (dispatch) => { //Thunk функция которая выполняет асинхр работу и делает диспатчи
         dispatch(setLoader(true))
         const data = await usersAPI.getUsers(currentPage, pageSize, isFriend); //запрос на сервер
-        dispatch(setLoader(false))
         dispatch(setUsers(data.items))
+        dispatch(setLoader(false))
         dispatch(setTotalCount(data.totalCount))
     }
 }

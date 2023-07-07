@@ -50,7 +50,8 @@ const mapStateToProps = (state) => ({
     userId: state.AuthPage.userId,
     avatar: state.ProfilePage.AvatarImg,
     photoAlbum: state.ProfilePage.photoAlbum,
-    friends: state.UsersPage.users
+    friends: state.UsersPage.users,
+    isFetch: state.UsersPage.isFetching
 })
 
 function withRouter(Component) {
@@ -65,7 +66,6 @@ function withRouter(Component) {
             />
         );
     }
-
     return ComponentWithRouterProp;
 }
 

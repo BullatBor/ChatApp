@@ -22,7 +22,6 @@ export const ProfileInfo = ({ profile, status, ...props }) => {
       else setEditPhotoActive(true)
     }
   }
-
   return (
     <div className={classes.Profile}>
       <div className={classes.mainImage}>

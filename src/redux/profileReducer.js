@@ -1,4 +1,5 @@
 import { usersAPI, profileAPI, postsAPI } from "../api/api";
+import defaultImg from "../assets/ava.png"
 
 const ADD_POST = "profile/ADD-POST";
 const SET_USER_PROFILE = "profile/SET-USER-PROFILE"
@@ -8,6 +9,7 @@ const SET_PROFILE_PHOTO = "profile/SET-PROFILE-PHOTO"
 const SET_DEFAULT_PHOTO = "profile/SET-DEFAULT-PHOTO"
 const ADD_PHOTO_IN_ALBUM = "profile/ADD-PHOTO-IN-ALBUM"
 const GET_PHOTOS_IN_ALBUM = "profile/GET-PHOTOS-IN-ALBUM"
+const SET_DEFAULT_PROFILE = "profile/SET-DEFAULT-PROFILE"
 
 let initialState = {
     posts: [
@@ -44,7 +46,7 @@ let initialState = {
     ],
     profile: null,
     isFetching: true,
-    AvatarImg: "https://atmstudio.su/d/warcraft-arthas-collectors-2_10.jpg",
+    AvatarImg: defaultImg,
     status: ""
 }
 
@@ -69,7 +71,7 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: action.profile,
-                AvatarImg: state.AvatarImg,
+                //AvatarImg: !action.profile && state.AvatarImg,
             };//Чтобы redux видел изменения, делаем копию
         }
         case SET_LOADER:
@@ -85,12 +87,12 @@ const profileReducer = (state = initialState, action) => {
         case SET_PROFILE_PHOTO:
             return {
                 ...state,
-                profile: { ...state.profile, photos: action.photos }
+                profile: { ...state.profile, photos: {large: action.photos} }
             }
         case SET_DEFAULT_PHOTO:
             return {
                 ...state,
-                AvatarImg: action.photo
+                AvatarImg: action.photo 
             }
         case GET_PHOTOS_IN_ALBUM: {
             let newImg = {
@@ -110,6 +112,11 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 photoAlbum: [newImg, ...state.photoAlbum]
+            }
+        }
+        case SET_DEFAULT_PROFILE: {
+            return {
+                ...initialState
             }
         }
         default:
@@ -142,9 +149,15 @@ export const updateStatus = (status) => ({
     status
 })
 
-export const setProfilePhotoSuccess = (photos) => ({
-    type: SET_PROFILE_PHOTO,
-    photos: photos
+export const setProfilePhotoSuccess = (photos) => {
+    return {
+        type: SET_PROFILE_PHOTO,
+        photos: photos
+    }
+}
+
+export const setDefaultProfile = () => ({
+    type: SET_DEFAULT_PROFILE
 })
 
 export const setDefaultPhoto = (photo) => ({

@@ -2,20 +2,34 @@
     display: grid;
     grid-template-columns: 4fr 10fr;
     border-radius: 15px;
+    height: 600px;
+
 }
 
 .dialogsItems {
     background-color: white;
     text-decoration: none;
-    border-top: #c9c9cc 0.4px solid;
-    border-left: #c9c9cc 0.4px solid;
-    border-bottom: #c9c9cc 0.4px solid;
+    border-top: #c9c9cc9a 0.4px solid;
+    border-left: #c9c9cc9a 0.4px solid;
+    border-bottom: #c9c9cc9a 0.4px solid;
+    overflow-y: scroll;
+    height: 530px;
+    border-radius: 0 0 0 15px;
+}
+
+.dialogsItems::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dialogsItems::-webkit-scrollbar-thumb {
+    background-color: #223c5056;
+    border-radius: 3px;
 }
 
 .dialog_name {
     padding-top: 12.5px;
     width: 229px;
-    border-bottom: #c9c9cc 0.4px solid;
+    border-bottom: #c9c9cc9a 0.4px solid;
 }
 
 .dialog_name:hover {
@@ -54,13 +68,12 @@
 
 
 .messages {
-    height: 650px;
     position: relative;
     background-color: white;
-    border-top: #c9c9cc 0.4px solid;
-    border-right: #c9c9cc 0.4px solid;
-    border-bottom: #c9c9cc 0.4px solid;
-    border-left: #c9c9cc 0.4px solid;
+    border-top: #c9c9cc9a 0.4px solid;
+    border-right: #c9c9cc9a 0.4px solid;
+    border-bottom: #c9c9cc9a 0.4px solid;
+    border-left: #c9c9cc9a 0.4px solid;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
@@ -74,7 +87,7 @@
 .searchBlock {
     background-color: white;
     border-top-left-radius: 15px;
-    border: #c9c9cc 0.4px solid;
+    border: #c9c9cc9a 0.4px solid;
 }
 
 .searchBlock input {
@@ -91,10 +104,35 @@
 }
 
 .NavName {
-    padding: 15px 20px;
     font-size: 14px;
     font-weight: 500;
-    border-bottom: #c9c9cc 0.4px solid;
+    border-bottom: #c9c9cc9a 0.4px solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+.NavNameTitle {
+    padding: 15px 20px;
+}
+
+.NavNameTitle a{
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.NavNamePhoto img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.NavNamePhoto {
+    padding: 0 20px 0 15px;
+    display: flex;
+    align-items: center;
 }
 
 .SlideBlock {
@@ -110,9 +148,9 @@
     background-color: white;
     height: 86px;
     z-index: 0;
-    border-bottom: #c9c9cc 0.4px solid;
-    border-left: #c9c9cc 0.4px solid;
-    border-right: #c9c9cc 0.4px solid;
+    border-bottom: #c9c9cc9a 0.4px solid;
+    border-left: #c9c9cc9a 0.4px solid;
+    border-right: #c9c9cc9a 0.4px solid;
     margin-bottom: 3px;
 }
 
@@ -122,12 +160,12 @@
     border-radius: 20px;
 }
 
-.FriendsList{
+.FriendsList {
     display: flex;
     transition: transform 0.2s ease;
 }
 
-.FriendPhoto{
+.FriendPhoto {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -147,7 +185,7 @@
     font-size: 12px;
 }
 
-.btnLeft{
+.btnLeft {
     margin-left: 5px;
     position: absolute;
     margin-top: 25px;
@@ -193,7 +231,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 700px;
+    width: 100%;
     display: flex;
     bottom: 0;
     border-top: #c9c9cc 0.4px solid;
@@ -233,6 +271,7 @@
 .dialogName span {
     font-size: 12.5px;
     font-weight: 500;
+    color: black;
 }
 
 .dialogName {
@@ -243,4 +282,16 @@
 
 .dialogName:hover {
     border-bottom: 0px;
+}
+
+.userLink {
+    text-decoration: none;
+}
+
+.defaultMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }

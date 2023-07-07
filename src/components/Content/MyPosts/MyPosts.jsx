@@ -7,6 +7,7 @@ import { Post } from './Post/Post'
 import photoCam from "../../../assets/PhotoCam.png"
 import {useDispatch} from "react-redux"
 import { getPosts } from '../../../redux/profileReducer'
+import photo from "../../../assets/ava.png"
 
 
 export const MyPosts = (props) => {
@@ -57,7 +58,7 @@ export const MyPosts = (props) => {
         {
           props.isOwner &&
           <div className={classes.NewPost} >
-            <img src={props.defaultImage} />
+            <img src={props.defaultImage || photo} />
             <Formik
               initialValues={{ textField: '', filePath: null }}
               onSubmit={onAddPost}

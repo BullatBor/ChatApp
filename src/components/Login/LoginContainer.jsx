@@ -21,7 +21,7 @@ const LoginForm = ({ LoginThunk, captchaUrl }) => {
 
   return (
     <Formik
-      initialValues={{ login: '', password: '', captcha: "", rememberMe: false }}
+      initialValues={{ login: 'free@samuraijs.com', password: 'free', captcha: "", rememberMe: false }}
       onSubmit={submit}
     >
       {({ errors, touched, isSubmitting, status }) => (

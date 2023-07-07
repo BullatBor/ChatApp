@@ -5,6 +5,7 @@ import ExitIcon from "./../../assets/exit.png"
 import vkIcon from "./../../assets/vkIcon.png"
 import classes from './Header.module.css';
 import { ModalForExit } from './ModalHeader/ModalForExit';
+import photo from "../../assets/ava.png"
 
 
 const Header = (props) => {
@@ -19,8 +20,9 @@ const Header = (props) => {
   }
 
   const logout = () => {
-    setShow(false)
-    props.LogoutThunkCreator()
+    setShow(false);
+    props.LogoutThunkCreator();
+    props.setDefaultProfile();
   }
 
   return (
@@ -38,7 +40,7 @@ const Header = (props) => {
             props.isAuth
             &&
             <div className={classes.LogPhoto} onClick={showModal} >
-              <img src={props.defaultPhoto} />
+              <img src={props.defaultPhoto || photo} />
             </div>
           }
         </div>
