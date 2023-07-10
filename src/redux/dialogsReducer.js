@@ -63,10 +63,10 @@ export const createNewChatThunkCreator = (userId) => {
 
 export const getDialogsThunkCreator = (currentPage, pageSize, isFriend) => {
     return async (dispatch) => {
-
+        setFetching(true);
         const data = await usersAPI.getUsers(currentPage, pageSize, isFriend);
         dispatch(setDialogs(data.items));
-
+        setFetching(false)
     }
 }
 

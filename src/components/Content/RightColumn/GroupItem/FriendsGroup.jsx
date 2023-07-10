@@ -3,6 +3,7 @@ import classes from './FriendsGroup.module.css'
 import defaultPhoto from "../../../../assets/ava.png"
 import { NavLink } from 'react-router-dom'
 import { Preloader } from '../../../common/preloader/Preloader'
+import { ProfileFriendsBlank } from '../../../common/preloader/Blank/Blank'
 
 export const FriendsGroup = (props) => {
   return (
@@ -10,17 +11,19 @@ export const FriendsGroup = (props) => {
       <div className={classes.friendsTitle}>
         <span>Друзья</span>
       </div>
-      <div className={classes.friendsList}>
-        {
-          props.isFetching ?
-            <Preloader />
-            :
-            props.isOwner &&
-            props.friends.map(item => {
-              return <Friend key={item.id} fullName={item.name} img={item.photos.large || defaultPhoto} id={item.id} />
-            })
-        }
-      </div>
+      {
+        props.isFetching ?
+          <ProfileFriendsBlank />
+          :
+          <div className={classes.friendsList}>
+            {
+              props.isOwner &&
+              props.friends.map(item => {
+                return <Friend key={item.id} fullName={item.name} img={item.photos.large || defaultPhoto} id={item.id} />
+              })
+            }
+          </div>
+      }
     </div>
   )
 }

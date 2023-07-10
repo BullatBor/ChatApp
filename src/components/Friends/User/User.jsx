@@ -31,10 +31,6 @@ export const User = (props) => {
           <span>{props.state.status}</span>
         </div>
         <div className={classes.userStatus}>     
-          <button disabled={props.isFollowing.some(id => id === props.state.id)}
-          onClick={isFollowed ? UnFollowed :  Followed}>
-            {isFollowed ? "Отписаться" : "Подписаться"}
-            </button>
         </div>  
       </div>
       <div className={classes.addFriend}>

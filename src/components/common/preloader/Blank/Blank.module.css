@@ -1,0 +1,80 @@
+.blankImg {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #f0f2f5;
+}
+
+.blankSpan{
+    margin-top: 8px;
+    width: 35px;
+    height: 10px;
+    background-color: #f0f2f5;
+    border-radius: 5px;
+}
+
+.FriendPhoto{
+    width: 70px;
+    height: 66px;
+    text-align: center;
+    padding: 8px 0 0 4px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.FriendsList {
+    display: flex;
+    transition: transform 0.2s ease;
+}
+
+.friendsList{
+    margin-top: 20px;
+    display: flex;
+    padding: 0 12px;
+    justify-content: space-between;
+}
+.friend{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: 0.3s all;
+    margin-bottom: 10px;
+}
+
+.blankProfileImg{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #f0f2f5;
+}
+
+.friendImg{
+    padding: 4px 8px; 
+}
+
+.post{
+    margin-top: 20px;
+    height: 120px;
+    background: linear-gradient(-45deg, #edeef0, #c0c0c9);
+    border-radius: 10px;
+    box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
+    background-size: 400% 400%;
+    animation: background 3s ease infinite;
+    transform: translate3d(0, 0, 0);  
+}
+@keyframes background {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+  }

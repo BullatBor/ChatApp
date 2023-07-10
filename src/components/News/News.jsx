@@ -4,6 +4,7 @@ import { NewsPost } from './NewsPost'
 import sendMessage from '../../assets/sendMessage.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPostsThunkCreator } from '../../redux/newsReducers'
+import { NewsPostBlank } from '../common/preloader/Blank/Blank'
 
 export const News = (props) => {
 
@@ -32,11 +33,15 @@ export const News = (props) => {
           <div className={classes.newPostAdd}>
             <input placeholder='Что у вас нового?' onChange={ChangeTextForPost} value={props.NewPostText}></input>
           </div>
-          <img onClick={AddPost} className={classes.sendMessage} src={sendMessage}/>
+          <img onClick={AddPost} className={classes.sendMessage} src={sendMessage} />
         </div>
-        {posts.map(item => {
-          return <NewsPost key={item.id} {...item}/>
-        })}
+        {
+          props.isFetching ?
+            <NewsPostBlank />
+            :
+            posts.map(item => {
+              return <NewsPost key={item.id} {...item} />
+            })}
       </div>
       <div className={classes.rightPanel}>
         <input></input>

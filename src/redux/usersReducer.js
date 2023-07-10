@@ -1,21 +1,25 @@
-import { followAPI, usersAPI } from "../api/api";
+import { usersAPI } from "../api/api";
 import { updateObjectInArray } from "../utils/object-helpers";
 
 const FOLLOW = "users/FOLLOW";
 const UNFOLLOW = "users/UNFOLLOW"
 const SET_USERS = "users/SET-USERS"
+const SET_POSSIBLE_FRIENDS = "users/SET-POSSIBLE-FRIENDS"
 const SET_CURRENT_PAGE = "users/SET-CURRENT-PAGE"
 const SET_TOTAL_COUNT = "users/SET-TOTAL_COUNT"
+const SET_FETCHING_FRIENDS = "users/SET-FETCHING_FRIENDS"
 const SET_LOADER = "users/SET-LOADER"
 const FOLLOWING_IN_PROGRESS = "users/FOLLOWING-IN-PROGRESS"
 
 let initialState = {
     users: [
     ],
+    possibleFriends: [],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false,
+    isFetching: true,
+    isFetchingFriends: true,
     followingInProgress: []//массив с id польз-ей у которых нажата кнопка подписаться/отписаться на время выполнения запросан а сервер
 }
 
@@ -59,6 +63,16 @@ const usersReducer = (state = initialState, action) => {
                     :
                     state.followingInProgress.filter(id => id !== action.userId)
             }
+        case SET_POSSIBLE_FRIENDS:
+            return {
+                ...state,
+                possibleFriends: [...action.users]
+            }
+        case SET_FETCHING_FRIENDS:
+            return {
+                ...state,
+                isFetchingFriends: action.payload
+            }
         default:
             return state;
     }
@@ -77,6 +91,12 @@ export const setUsers = (users) => ({
     type: SET_USERS,
     users
 })
+
+export const setPossibleFriends = (users) => ({
+    type: SET_POSSIBLE_FRIENDS,
+    users
+})
+
 export const setCurrentPage = (page) => ({
     type: SET_CURRENT_PAGE,
     currentPage: page
@@ -85,9 +105,15 @@ export const setTotalCount = (count) => ({
     type: SET_TOTAL_COUNT,
     totalCount: count
 })
+
 export const setLoader = (load) => ({
     type: SET_LOADER,
     isFetching: load
+})
+
+export const setLoaderFriends = (load) => ({
+    type: SET_FETCHING_FRIENDS,
+    payload: load
 })
 export const setFollowButton = (load, userId) => ({
     type: FOLLOWING_IN_PROGRESS,
@@ -102,6 +128,15 @@ export const getUsersThunkCreator = (currentPage, pageSize, isFriend) => {//Thun
         dispatch(setUsers(data.items))
         dispatch(setLoader(false))
         dispatch(setTotalCount(data.totalCount))
+    }
+}
+
+export const getPossibleFriendsThunkCreator = (currentPage, pageSize) => {//ThunkCreator
+    return async (dispatch) => { //Thunk функция которая выполняет асинхр работу и делает диспатчи
+        dispatch(setLoaderFriends(true))
+        const data = await usersAPI.getUsers(currentPage, pageSize, false); //запрос на сервер
+        dispatch(setPossibleFriends(data.items))
+        dispatch(setLoaderFriends(false))
     }
 }
 

@@ -3,27 +3,32 @@ import { connect } from 'react-redux';
 import {
   getUsersThunkCreator,
   ChangeUsersPageThunkCreator,
-  FollowThunkCreator
+  FollowThunkCreator,
+  getPossibleFriendsThunkCreator
 } from '../../redux/usersReducer';
 import { Users } from './Users';
 import { Preloader } from '../common/preloader/Preloader';
 import { withAuthNavigate } from '../../hoc/withAuthNavigate';
 import { compose } from 'redux';
-import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers } from '../../redux/users-selectors';
+import { getCurrentPage, getFollowingInProgress, getIsFetching, getLoaderFriends, getPageSize, getPossibFriends, getTotalUsersCount, getUsers } from '../../redux/users-selectors';
+import classes from "./Users.module.css"
+import { PossibleFriends } from './PossibleFriends/PossibleFriends';
 
 export class UsersAPIComponent extends React.Component {
   componentDidMount() {
-    const {currentPage, pageSize} = this.props
-    this.props.getUsersThunkCreator(currentPage, pageSize, true)
+    const {currentPage, pageSize} = this.props;    
+    this.props.getUsersThunkCreator(currentPage, pageSize, true);
+    let randomPage = Math.floor(1 + Math.random() * (10 - 1 + 1));
+    this.props.getPossibleFriendsThunkCreator(randomPage, pageSize);
   }
 
 
   onPageChanged = (PageNumber) => {
     const {pageSize} = this.props;
-    this.props.ChangeUsersPageThunkCreator(PageNumber, this.props.pageSize)
+    this.props.ChangeUsersPageThunkCreator(PageNumber, pageSize)
   }
   render() {
-    return <>
+    return <div className={classes.friendPage}>
       {
         this.props.isFetching
           ? <Preloader />
@@ -39,7 +44,8 @@ export class UsersAPIComponent extends React.Component {
             isFollowing={this.props.isFollowing}
           />
       }
-    </>
+      <PossibleFriends possibleFriends={this.props.possibleFriends} isFetching={this.props.isFetchingFriends}/>
+    </ div>
   }
 }
 
@@ -63,12 +69,15 @@ const mapStateToProps = (state) => {//Тут для отрисовки возв�
     currentPage: getCurrentPage(state),
     isFetching: getIsFetching(state),
     isFollowing: getFollowingInProgress(state),
+    possibleFriends: getPossibFriends(state),
+    isFetchingFriends: getLoaderFriends(state)
   }
 }
 
 export let UsersContainer = compose(
   connect(mapStateToProps, {
     getUsersThunkCreator,
+    getPossibleFriendsThunkCreator,
     ChangeUsersPageThunkCreator,
     FollowThunkCreator
   }),

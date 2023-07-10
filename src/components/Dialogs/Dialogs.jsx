@@ -22,7 +22,7 @@ export const Dialogs = (props) => {
     <div className={classes.dialogs}>
       <div className={classes.sideBar}>
         <DialogsSearch />
-        <FriendsSlide state={props.users} getUsers={props.getUsersThunkCreator} />
+        <FriendsSlide state={props.users} getUsers={props.getUsersThunkCreator} isFetching={props.isUserFetching}/>
         <div className={classes.dialogsItems}>
           {props.DialogsPage.Dialogs.map((item) => {
             return <DialogItem key={item.id} id={item.id} name={item.name} img={item.photos.large} />

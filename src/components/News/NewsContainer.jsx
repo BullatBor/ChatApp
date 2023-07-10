@@ -13,7 +13,7 @@ class NewsContainerClass extends React.Component {
 
 
 let mapStateToProps = (state) => ({
-  
+  isFetching: state.NewsPage.isFetching
 })
 
 export let NewsContainer = compose(connect(mapStateToProps, {AddNews}),
