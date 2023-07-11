@@ -1,0 +1,129 @@
+.friendPage {
+    display: grid;
+    grid-template-columns: 10fr 6fr;
+    grid-template-areas: "friends possibleFriends";
+}
+
+.possibleFriends {
+    position: sticky;
+    top: 4em;
+    grid-area: possibleFriends;
+    background-color: white;
+    padding: 8px;
+    border-radius: 15px;
+    max-height: 330px;
+}
+
+.possibleFriends a{
+    text-decoration: none;
+}
+
+.headerFriends {
+    padding: 0 12px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.headerFriends span {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.friend {
+    padding: 0 12px;
+    background-color: white;
+    margin-top: 2px;
+    display: flex;
+    height: 56px;
+    border-radius: 15px;
+}
+
+.friend:hover {
+    background-color: #eef6ff;
+}
+
+.friendImg {
+    display: flex;
+    align-items: center;
+}
+
+.friendImg img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.friendName {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    color: black;
+}
+
+.friendName span{
+    font-size: 14px;
+}
+
+.Users {
+    grid-area: friends;
+    width: 550px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px 20px;
+    margin-bottom: 20px;
+}
+
+
+
+.User {
+    background-color: white;
+    border-bottom: #b0b0b1 1px solid;
+    padding: 12px 0 12px;
+    display: flex;
+}
+
+.userPhoto img {
+    margin-right: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 55px;
+}
+
+.userName {
+
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+.userName a {
+    color: #2a5885;
+    text-decoration: none;
+}
+
+.userInfo {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px 0 0;
+}
+
+
+
+
+.addFriend img {
+    width: 24px;
+    height: 24px;
+}
+
+.addFriend {
+    border-radius: 30px;
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.addFriend:hover {
+    background-color: #eef6ff;
+}

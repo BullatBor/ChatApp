@@ -1,0 +1,37 @@
+.app-wrapper {
+  display: grid;
+  background-color: #edeef0;
+  width: 100%;
+  grid-template-areas: 
+  "head"
+  "content";
+  grid-template-rows: 48px 1fr;
+  justify-content: center;
+}
+
+.app-wrapper-content{
+  grid-area: main;
+  background-color: #edeef0;
+  padding-top: 20px;
+  width: 1000px;
+}
+
+.content{
+  width: 1200px;
+  display: grid;
+  grid-area: content;
+  grid-template-areas: 
+  "bar main";
+  grid-template-columns: 7fr 10fr; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container{
+  background-color: #edeef0;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 5;
+  position: relative;
+}

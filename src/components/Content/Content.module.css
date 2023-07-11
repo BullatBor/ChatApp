@@ -1,0 +1,16 @@
+.TwoColumn{
+    display: flex;
+}
+
+.ProfilePosts{
+    display: grid;
+    grid-template-columns: 600px 400px;
+    border-radius: 15px;
+}
+
+.wrapper{
+    position: relative;
+    grid-area: main;
+    background-color: #edeef0;
+    padding-top: 20px;
+  }

@@ -1,0 +1,135 @@
+.header {
+  width: 1200px;
+  display: flex;
+  position: relative;
+}
+.headerBlock{
+  width: 100vw;
+  grid-area: head;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border-bottom: #b8b8ce7a 1px solid;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.search {
+  display: flex;
+}
+
+.vkIcon{
+  padding: 8px 0;
+  height: 32px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.vkIcon img{
+  padding: 4px 0;
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
+}
+
+.vkIcon span {
+  font-weight: 600;
+  line-height: 32px;
+}
+
+
+
+
+.loginBlock {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  padding-left: 10px;
+}
+
+
+.loginBlock a {
+  color: rgb(64, 133, 110);
+}
+
+.LogPhoto {
+  width: 48px;
+  height: 48px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LogPhoto:hover {
+  background-color: #eeeff1;
+}
+
+
+.LogPhoto img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.modal {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  z-index: 9999;
+  padding: 12px 0 8px;
+  background-color: white;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
+  margin-right: 20px;
+  width: 250px;
+}
+
+.item img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.item {
+  padding: 0 16px;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.625em;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.item span {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.itemPanel {
+  height: 36px;
+}
+
+.itemPanel:hover {
+  cursor: pointer;
+  background-color: #f0f2f5;
+}
+
+.Exit{
+  position: relative;
+}

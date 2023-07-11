@@ -1,0 +1,104 @@
+.postContent {
+  color: rgb(107, 128, 128);
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0.5px 1.5px rgba(63, 63, 63, 0.3);
+}
+
+.postHeader {
+  padding: 16px 20px 0;
+  display: flex;
+}
+
+.postHeaderTitle {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.postHeaderTitle span{
+  color:#2a5885;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.postHeaderTitle time{
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.postHeader img {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  margin-right: 12px;
+}
+
+.postHeaderTitle span:hover,
+.postHeaderTitle time:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.postWall {
+  padding: 0 20px;
+  color: black;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.wallText{
+  margin-bottom: 10px;
+}
+
+.postWall img {
+  width: 510px;
+  height: 510px;
+  border-radius: 15px;
+}
+
+.postFooter{
+  padding: 0 20px;
+}
+
+.postFooterBtns{
+  padding: 12px 0;
+}
+
+.postFooterBtns{
+  display: flex;
+}
+
+.footerItem {
+  width: 45px;
+  height: 28px;
+  background-color: rgba(160, 203, 245, 0.651);
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  justify-content: space-between;
+  padding: 2px 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.likedPost{
+  background-color: #fdc4c4;
+}
+
+.footerItem img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+}
+
+.showMore{
+  cursor: pointer;
+  color: #2a5885;
+  font-weight: 500;
+}
+
+.wallText{
+  line-height: 1.462;
+}
