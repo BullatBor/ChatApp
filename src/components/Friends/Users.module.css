@@ -5,11 +5,13 @@
 }
 
 .possibleFriends {
+    position: sticky;
+    top: 4em;
     grid-area: possibleFriends;
     background-color: white;
     padding: 8px;
     border-radius: 15px;
-    height:55%;
+    max-height: 330px;
 }
 
 .possibleFriends a{

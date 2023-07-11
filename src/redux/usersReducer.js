@@ -15,7 +15,7 @@ let initialState = {
     users: [
     ],
     possibleFriends: [],
-    pageSize: 5,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
@@ -37,7 +37,7 @@ const usersReducer = (state = initialState, action) => {
             }
         case SET_USERS:
             return {//глубокое копирование
-                ...state, users: [...action.users]
+                ...state, users: [...state.users, ...action.users]
             }
         case SET_CURRENT_PAGE:
             return {
@@ -131,10 +131,10 @@ export const getUsersThunkCreator = (currentPage, pageSize, isFriend) => {//Thun
     }
 }
 
-export const getPossibleFriendsThunkCreator = (currentPage, pageSize) => {//ThunkCreator
+export const getPossibleFriendsThunkCreator = (currentPage) => {//ThunkCreator
     return async (dispatch) => { //Thunk функция которая выполняет асинхр работу и делает диспатчи
         dispatch(setLoaderFriends(true))
-        const data = await usersAPI.getUsers(currentPage, pageSize, false); //запрос на сервер
+        const data = await usersAPI.getUsers(currentPage, 5, false); //запрос на сервер
         dispatch(setPossibleFriends(data.items))
         dispatch(setLoaderFriends(false))
     }

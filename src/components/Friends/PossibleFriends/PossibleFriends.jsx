@@ -11,12 +11,12 @@ export const PossibleFriends = (props) => {
         <span>Возможные друзья</span>
       </div>
       {
-        props.isFetching ? <Preloader />
+        props.isFetching ? <div></div>
           :
           props.possibleFriends.map(friend => {
             return (
-              <NavLink to={"/profile/"+friend.id}>
-                <div key={friend.id} className={classes.friend}>
+              <NavLink key={friend.id} to={"/profile/"+friend.id}>
+                <div className={classes.friend}>
                   <div className={classes.friendImg}>
                     <img src={friend.photos.large || defaultPhoto} />
                   </div>

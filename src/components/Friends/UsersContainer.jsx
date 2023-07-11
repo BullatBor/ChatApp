@@ -16,10 +16,10 @@ import { PossibleFriends } from './PossibleFriends/PossibleFriends';
 
 export class UsersAPIComponent extends React.Component {
   componentDidMount() {
-    const {currentPage, pageSize} = this.props;    
-    this.props.getUsersThunkCreator(currentPage, pageSize, true);
+    //const {currentPage, pageSize} = this.props;    
+    //this.props.getUsersThunkCreator(currentPage, pageSize, true);
     let randomPage = Math.floor(1 + Math.random() * (10 - 1 + 1));
-    this.props.getPossibleFriendsThunkCreator(randomPage, pageSize);
+    this.props.getPossibleFriendsThunkCreator(randomPage);
   }
 
 
@@ -30,9 +30,6 @@ export class UsersAPIComponent extends React.Component {
   render() {
     return <div className={classes.friendPage}>
       {
-        this.props.isFetching
-          ? <Preloader />
-          :
           <Users
             totalUsersCount={this.props.totalUsersCount}
             pageSize={this.props.pageSize}
@@ -42,6 +39,7 @@ export class UsersAPIComponent extends React.Component {
             users={this.props.users}
             isFetching={this.props.isFetching}
             isFollowing={this.props.isFollowing}
+            getUsers={this.props.getUsersThunkCreator}
           />
       }
       <PossibleFriends possibleFriends={this.props.possibleFriends} isFetching={this.props.isFetchingFriends}/>
